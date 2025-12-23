@@ -1,0 +1,2 @@
+make getlib
+make

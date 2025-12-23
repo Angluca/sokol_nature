@@ -1,0 +1,674 @@
+// machine generated, do not edit
+
+#linkid sapp_isvalid
+fn isvalid(): bool
+#linkid sapp_width
+fn width(): i32
+#linkid sapp_widthf
+fn widthf(): f32
+#linkid sapp_height
+fn height(): i32
+#linkid sapp_heightf
+fn heightf(): f32
+#linkid sapp_color_format
+fn color_format(): u32
+#linkid sapp_depth_format
+fn depth_format(): u32
+#linkid sapp_sample_count
+fn sample_count(): i32
+#linkid sapp_high_dpi
+fn high_dpi(): bool
+#linkid sapp_dpi_scale
+fn dpi_scale(): f32
+#linkid sapp_show_keyboard
+fn show_keyboard(bool show)
+#linkid sapp_keyboard_shown
+fn keyboard_shown(): bool
+#linkid sapp_is_fullscreen
+fn is_fullscreen(): bool
+#linkid sapp_toggle_fullscreen
+fn toggle_fullscreen()
+#linkid sapp_show_mouse
+fn show_mouse(bool show)
+#linkid sapp_mouse_shown
+fn mouse_shown(): bool
+#linkid sapp_lock_mouse
+fn lock_mouse(bool lock)
+#linkid sapp_mouse_locked
+fn mouse_locked(): bool
+#linkid sapp_set_mouse_cursor
+fn set_mouse_cursor(u32 cursor)
+#linkid sapp_get_mouse_cursor
+fn get_mouse_cursor(): u32
+#linkid sapp_bind_mouse_cursor_image
+fn bind_mouse_cursor_image(u32 cursor, rawptr<image_desc_t> desc): u32
+#linkid sapp_unbind_mouse_cursor_image
+fn unbind_mouse_cursor_image(u32 cursor)
+#linkid sapp_userdata
+fn userdata(): anyptr
+#linkid sapp_query_desc
+fn query_desc(): desc_t
+#linkid sapp_request_quit
+fn request_quit()
+#linkid sapp_cancel_quit
+fn cancel_quit()
+#linkid sapp_quit
+fn quit()
+#linkid sapp_consume_event
+fn consume_event()
+#linkid sapp_frame_count
+fn frame_count(): u64
+#linkid sapp_frame_duration
+fn frame_duration(): f64
+#linkid sapp_set_clipboard_string
+fn set_clipboard_string(rawptr<u8> str)
+#linkid sapp_get_clipboard_string
+fn get_clipboard_string(): rawptr<u8>
+#linkid sapp_set_window_title
+fn set_window_title(rawptr<u8> str)
+#linkid sapp_set_icon
+fn set_icon(rawptr<icon_desc_t> icon_desc)
+#linkid sapp_get_num_dropped_files
+fn get_num_dropped_files(): i32
+#linkid sapp_get_dropped_file_path
+fn get_dropped_file_path(i32 index): rawptr<u8>
+#linkid sapp_run
+fn run(rawptr<desc_t> desc)
+#linkid sapp_get_environment
+fn get_environment(): environment_t
+#linkid sapp_get_swapchain
+fn get_swapchain(): swapchain_t
+#linkid sapp_egl_get_display
+fn egl_get_display(): anyptr
+#linkid sapp_egl_get_context
+fn egl_get_context(): anyptr
+#linkid sapp_html5_ask_leave_site
+fn html5_ask_leave_site(bool ask)
+#linkid sapp_html5_get_dropped_file_size
+fn html5_get_dropped_file_size(i32 index): u32
+#linkid sapp_html5_fetch_dropped_file
+fn html5_fetch_dropped_file(rawptr<html5_fetch_request_t> request)
+#linkid sapp_macos_get_window
+fn macos_get_window(): anyptr
+#linkid sapp_ios_get_window
+fn ios_get_window(): anyptr
+#linkid sapp_d3d11_get_swap_chain
+fn d3d11_get_swap_chain(): anyptr
+#linkid sapp_win32_get_hwnd
+fn win32_get_hwnd(): anyptr
+#linkid sapp_gl_get_major_version
+fn gl_get_major_version(): i32
+#linkid sapp_gl_get_minor_version
+fn gl_get_minor_version(): i32
+#linkid sapp_gl_is_gles
+fn gl_is_gles(): bool
+#linkid sapp_x11_get_window
+fn x11_get_window(): anyptr
+#linkid sapp_x11_get_display
+fn x11_get_display(): anyptr
+#linkid sapp_android_get_native_activity
+fn android_get_native_activity(): anyptr
+
+const MAX_TOUCHPOINTS = 8
+const MAX_MOUSEBUTTONS = 3
+const MAX_KEYCODES = 512
+const MAX_ICONIMAGES = 8
+
+const EVENTTYPE_INVALID = 0
+const EVENTTYPE_KEY_DOWN = 1
+const EVENTTYPE_KEY_UP = 2
+const EVENTTYPE_CHAR = 3
+const EVENTTYPE_MOUSE_DOWN = 4
+const EVENTTYPE_MOUSE_UP = 5
+const EVENTTYPE_MOUSE_SCROLL = 6
+const EVENTTYPE_MOUSE_MOVE = 7
+const EVENTTYPE_MOUSE_ENTER = 8
+const EVENTTYPE_MOUSE_LEAVE = 9
+const EVENTTYPE_TOUCHES_BEGAN = 10
+const EVENTTYPE_TOUCHES_MOVED = 11
+const EVENTTYPE_TOUCHES_ENDED = 12
+const EVENTTYPE_TOUCHES_CANCELLED = 13
+const EVENTTYPE_RESIZED = 14
+const EVENTTYPE_ICONIFIED = 15
+const EVENTTYPE_RESTORED = 16
+const EVENTTYPE_FOCUSED = 17
+const EVENTTYPE_UNFOCUSED = 18
+const EVENTTYPE_SUSPENDED = 19
+const EVENTTYPE_RESUMED = 20
+const EVENTTYPE_QUIT_REQUESTED = 21
+const EVENTTYPE_CLIPBOARD_PASTED = 22
+const EVENTTYPE_FILES_DROPPED = 23
+const EVENTTYPE_NUM = 24
+
+const KEYCODE_INVALID = 0
+const KEYCODE_SPACE = 32
+const KEYCODE_APOSTROPHE = 39
+const KEYCODE_COMMA = 44
+const KEYCODE_MINUS = 45
+const KEYCODE_PERIOD = 46
+const KEYCODE_SLASH = 47
+const KEYCODE_NUM_0 = 48
+const KEYCODE_NUM_1 = 49
+const KEYCODE_NUM_2 = 50
+const KEYCODE_NUM_3 = 51
+const KEYCODE_NUM_4 = 52
+const KEYCODE_NUM_5 = 53
+const KEYCODE_NUM_6 = 54
+const KEYCODE_NUM_7 = 55
+const KEYCODE_NUM_8 = 56
+const KEYCODE_NUM_9 = 57
+const KEYCODE_SEMICOLON = 59
+const KEYCODE_EQUAL = 61
+const KEYCODE_A = 65
+const KEYCODE_B = 66
+const KEYCODE_C = 67
+const KEYCODE_D = 68
+const KEYCODE_E = 69
+const KEYCODE_F = 70
+const KEYCODE_G = 71
+const KEYCODE_H = 72
+const KEYCODE_I = 73
+const KEYCODE_J = 74
+const KEYCODE_K = 75
+const KEYCODE_L = 76
+const KEYCODE_M = 77
+const KEYCODE_N = 78
+const KEYCODE_O = 79
+const KEYCODE_P = 80
+const KEYCODE_Q = 81
+const KEYCODE_R = 82
+const KEYCODE_S = 83
+const KEYCODE_T = 84
+const KEYCODE_U = 85
+const KEYCODE_V = 86
+const KEYCODE_W = 87
+const KEYCODE_X = 88
+const KEYCODE_Y = 89
+const KEYCODE_Z = 90
+const KEYCODE_LEFT_BRACKET = 91
+const KEYCODE_BACKSLASH = 92
+const KEYCODE_RIGHT_BRACKET = 93
+const KEYCODE_GRAVE_ACCENT = 96
+const KEYCODE_WORLD_1 = 161
+const KEYCODE_WORLD_2 = 162
+const KEYCODE_ESCAPE = 256
+const KEYCODE_ENTER = 257
+const KEYCODE_TAB = 258
+const KEYCODE_BACKSPACE = 259
+const KEYCODE_INSERT = 260
+const KEYCODE_DELETE = 261
+const KEYCODE_RIGHT = 262
+const KEYCODE_LEFT = 263
+const KEYCODE_DOWN = 264
+const KEYCODE_UP = 265
+const KEYCODE_PAGE_UP = 266
+const KEYCODE_PAGE_DOWN = 267
+const KEYCODE_HOME = 268
+const KEYCODE_END = 269
+const KEYCODE_CAPS_LOCK = 280
+const KEYCODE_SCROLL_LOCK = 281
+const KEYCODE_NUM_LOCK = 282
+const KEYCODE_PRINT_SCREEN = 283
+const KEYCODE_PAUSE = 284
+const KEYCODE_F1 = 290
+const KEYCODE_F2 = 291
+const KEYCODE_F3 = 292
+const KEYCODE_F4 = 293
+const KEYCODE_F5 = 294
+const KEYCODE_F6 = 295
+const KEYCODE_F7 = 296
+const KEYCODE_F8 = 297
+const KEYCODE_F9 = 298
+const KEYCODE_F10 = 299
+const KEYCODE_F11 = 300
+const KEYCODE_F12 = 301
+const KEYCODE_F13 = 302
+const KEYCODE_F14 = 303
+const KEYCODE_F15 = 304
+const KEYCODE_F16 = 305
+const KEYCODE_F17 = 306
+const KEYCODE_F18 = 307
+const KEYCODE_F19 = 308
+const KEYCODE_F20 = 309
+const KEYCODE_F21 = 310
+const KEYCODE_F22 = 311
+const KEYCODE_F23 = 312
+const KEYCODE_F24 = 313
+const KEYCODE_F25 = 314
+const KEYCODE_KP_0 = 320
+const KEYCODE_KP_1 = 321
+const KEYCODE_KP_2 = 322
+const KEYCODE_KP_3 = 323
+const KEYCODE_KP_4 = 324
+const KEYCODE_KP_5 = 325
+const KEYCODE_KP_6 = 326
+const KEYCODE_KP_7 = 327
+const KEYCODE_KP_8 = 328
+const KEYCODE_KP_9 = 329
+const KEYCODE_KP_DECIMAL = 330
+const KEYCODE_KP_DIVIDE = 331
+const KEYCODE_KP_MULTIPLY = 332
+const KEYCODE_KP_SUBTRACT = 333
+const KEYCODE_KP_ADD = 334
+const KEYCODE_KP_ENTER = 335
+const KEYCODE_KP_EQUAL = 336
+const KEYCODE_LEFT_SHIFT = 340
+const KEYCODE_LEFT_CONTROL = 341
+const KEYCODE_LEFT_ALT = 342
+const KEYCODE_LEFT_SUPER = 343
+const KEYCODE_RIGHT_SHIFT = 344
+const KEYCODE_RIGHT_CONTROL = 345
+const KEYCODE_RIGHT_ALT = 346
+const KEYCODE_RIGHT_SUPER = 347
+const KEYCODE_MENU = 348
+
+const ANDROIDTOOLTYPE_UNKNOWN = 0
+const ANDROIDTOOLTYPE_FINGER = 1
+const ANDROIDTOOLTYPE_STYLUS = 2
+const ANDROIDTOOLTYPE_MOUSE = 3
+
+type touchpoint_t = struct {
+    anyptr identifier;
+    f32 pos_x;
+    f32 pos_y;
+    u32 android_tooltype;
+    bool changed;
+}
+
+const MOUSEBUTTON_LEFT = 0
+const MOUSEBUTTON_RIGHT = 1
+const MOUSEBUTTON_MIDDLE = 2
+const MOUSEBUTTON_INVALID = 256
+
+const MODIFIER_SHIFT = 1
+const MODIFIER_CTRL = 2
+const MODIFIER_ALT = 4
+const MODIFIER_SUPER = 8
+const MODIFIER_LMB = 256
+const MODIFIER_RMB = 512
+const MODIFIER_MMB = 1024
+
+type event_t = struct {
+    u64 frame_count;
+    u32 type_;
+    u32 key_code;
+    u32 char_code;
+    bool key_repeat;
+    u32 modifiers;
+    u32 mouse_button;
+    f32 mouse_x;
+    f32 mouse_y;
+    f32 mouse_dx;
+    f32 mouse_dy;
+    f32 scroll_x;
+    f32 scroll_y;
+    i32 num_touches;
+    [touchpoint_t;8] touches;
+    i32 window_width;
+    i32 window_height;
+    i32 framebuffer_width;
+    i32 framebuffer_height;
+}
+
+type range_t = struct {
+    anyptr ptr;
+    int size;
+}
+
+type image_desc_t = struct {
+    i32 width;
+    i32 height;
+    i32 cursor_hotspot_x;
+    i32 cursor_hotspot_y;
+    range_t pixels;
+}
+
+type icon_desc_t = struct {
+    bool sokol_default;
+    [image_desc_t;8] images;
+}
+
+type allocator_t = struct {
+    anyptr alloc_fn;
+    anyptr free_fn;
+    anyptr user_data;
+}
+
+const LOGITEM_OK = 0
+const LOGITEM_MALLOC_FAILED = 1
+const LOGITEM_MACOS_INVALID_NSOPENGL_PROFILE = 2
+const LOGITEM_WIN32_LOAD_OPENGL32_DLL_FAILED = 3
+const LOGITEM_WIN32_CREATE_HELPER_WINDOW_FAILED = 4
+const LOGITEM_WIN32_HELPER_WINDOW_GETDC_FAILED = 5
+const LOGITEM_WIN32_DUMMY_CONTEXT_SET_PIXELFORMAT_FAILED = 6
+const LOGITEM_WIN32_CREATE_DUMMY_CONTEXT_FAILED = 7
+const LOGITEM_WIN32_DUMMY_CONTEXT_MAKE_CURRENT_FAILED = 8
+const LOGITEM_WIN32_GET_PIXELFORMAT_ATTRIB_FAILED = 9
+const LOGITEM_WIN32_WGL_FIND_PIXELFORMAT_FAILED = 10
+const LOGITEM_WIN32_WGL_DESCRIBE_PIXELFORMAT_FAILED = 11
+const LOGITEM_WIN32_WGL_SET_PIXELFORMAT_FAILED = 12
+const LOGITEM_WIN32_WGL_ARB_CREATE_CONTEXT_REQUIRED = 13
+const LOGITEM_WIN32_WGL_ARB_CREATE_CONTEXT_PROFILE_REQUIRED = 14
+const LOGITEM_WIN32_WGL_OPENGL_VERSION_NOT_SUPPORTED = 15
+const LOGITEM_WIN32_WGL_OPENGL_PROFILE_NOT_SUPPORTED = 16
+const LOGITEM_WIN32_WGL_INCOMPATIBLE_DEVICE_CONTEXT = 17
+const LOGITEM_WIN32_WGL_CREATE_CONTEXT_ATTRIBS_FAILED_OTHER = 18
+const LOGITEM_WIN32_D3D11_CREATE_DEVICE_AND_SWAPCHAIN_WITH_DEBUG_FAILED = 19
+const LOGITEM_WIN32_D3D11_GET_IDXGIFACTORY_FAILED = 20
+const LOGITEM_WIN32_D3D11_GET_IDXGIADAPTER_FAILED = 21
+const LOGITEM_WIN32_D3D11_QUERY_INTERFACE_IDXGIDEVICE1_FAILED = 22
+const LOGITEM_WIN32_REGISTER_RAW_INPUT_DEVICES_FAILED_MOUSE_LOCK = 23
+const LOGITEM_WIN32_REGISTER_RAW_INPUT_DEVICES_FAILED_MOUSE_UNLOCK = 24
+const LOGITEM_WIN32_GET_RAW_INPUT_DATA_FAILED = 25
+const LOGITEM_WIN32_DESTROYICON_FOR_CURSOR_FAILED = 26
+const LOGITEM_LINUX_GLX_LOAD_LIBGL_FAILED = 27
+const LOGITEM_LINUX_GLX_LOAD_ENTRY_POINTS_FAILED = 28
+const LOGITEM_LINUX_GLX_EXTENSION_NOT_FOUND = 29
+const LOGITEM_LINUX_GLX_QUERY_VERSION_FAILED = 30
+const LOGITEM_LINUX_GLX_VERSION_TOO_LOW = 31
+const LOGITEM_LINUX_GLX_NO_GLXFBCONFIGS = 32
+const LOGITEM_LINUX_GLX_NO_SUITABLE_GLXFBCONFIG = 33
+const LOGITEM_LINUX_GLX_GET_VISUAL_FROM_FBCONFIG_FAILED = 34
+const LOGITEM_LINUX_GLX_REQUIRED_EXTENSIONS_MISSING = 35
+const LOGITEM_LINUX_GLX_CREATE_CONTEXT_FAILED = 36
+const LOGITEM_LINUX_GLX_CREATE_WINDOW_FAILED = 37
+const LOGITEM_LINUX_X11_CREATE_WINDOW_FAILED = 38
+const LOGITEM_LINUX_EGL_BIND_OPENGL_API_FAILED = 39
+const LOGITEM_LINUX_EGL_BIND_OPENGL_ES_API_FAILED = 40
+const LOGITEM_LINUX_EGL_GET_DISPLAY_FAILED = 41
+const LOGITEM_LINUX_EGL_INITIALIZE_FAILED = 42
+const LOGITEM_LINUX_EGL_NO_CONFIGS = 43
+const LOGITEM_LINUX_EGL_NO_NATIVE_VISUAL = 44
+const LOGITEM_LINUX_EGL_GET_VISUAL_INFO_FAILED = 45
+const LOGITEM_LINUX_EGL_CREATE_WINDOW_SURFACE_FAILED = 46
+const LOGITEM_LINUX_EGL_CREATE_CONTEXT_FAILED = 47
+const LOGITEM_LINUX_EGL_MAKE_CURRENT_FAILED = 48
+const LOGITEM_LINUX_X11_OPEN_DISPLAY_FAILED = 49
+const LOGITEM_LINUX_X11_QUERY_SYSTEM_DPI_FAILED = 50
+const LOGITEM_LINUX_X11_DROPPED_FILE_URI_WRONG_SCHEME = 51
+const LOGITEM_LINUX_X11_FAILED_TO_BECOME_OWNER_OF_CLIPBOARD = 52
+const LOGITEM_ANDROID_UNSUPPORTED_INPUT_EVENT_INPUT_CB = 53
+const LOGITEM_ANDROID_UNSUPPORTED_INPUT_EVENT_MAIN_CB = 54
+const LOGITEM_ANDROID_READ_MSG_FAILED = 55
+const LOGITEM_ANDROID_WRITE_MSG_FAILED = 56
+const LOGITEM_ANDROID_MSG_CREATE = 57
+const LOGITEM_ANDROID_MSG_RESUME = 58
+const LOGITEM_ANDROID_MSG_PAUSE = 59
+const LOGITEM_ANDROID_MSG_FOCUS = 60
+const LOGITEM_ANDROID_MSG_NO_FOCUS = 61
+const LOGITEM_ANDROID_MSG_SET_NATIVE_WINDOW = 62
+const LOGITEM_ANDROID_MSG_SET_INPUT_QUEUE = 63
+const LOGITEM_ANDROID_MSG_DESTROY = 64
+const LOGITEM_ANDROID_UNKNOWN_MSG = 65
+const LOGITEM_ANDROID_LOOP_THREAD_STARTED = 66
+const LOGITEM_ANDROID_LOOP_THREAD_DONE = 67
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONSTART = 68
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONRESUME = 69
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONSAVEINSTANCESTATE = 70
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONWINDOWFOCUSCHANGED = 71
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONPAUSE = 72
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONSTOP = 73
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONNATIVEWINDOWCREATED = 74
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONNATIVEWINDOWDESTROYED = 75
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONINPUTQUEUECREATED = 76
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONINPUTQUEUEDESTROYED = 77
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONCONFIGURATIONCHANGED = 78
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONLOWMEMORY = 79
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONDESTROY = 80
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_DONE = 81
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_ONCREATE = 82
+const LOGITEM_ANDROID_CREATE_THREAD_PIPE_FAILED = 83
+const LOGITEM_ANDROID_NATIVE_ACTIVITY_CREATE_SUCCESS = 84
+const LOGITEM_WGPU_DEVICE_LOST = 85
+const LOGITEM_WGPU_DEVICE_LOG = 86
+const LOGITEM_WGPU_DEVICE_UNCAPTURED_ERROR = 87
+const LOGITEM_WGPU_SWAPCHAIN_CREATE_SURFACE_FAILED = 88
+const LOGITEM_WGPU_SWAPCHAIN_SURFACE_GET_CAPABILITIES_FAILED = 89
+const LOGITEM_WGPU_SWAPCHAIN_CREATE_DEPTH_STENCIL_TEXTURE_FAILED = 90
+const LOGITEM_WGPU_SWAPCHAIN_CREATE_DEPTH_STENCIL_VIEW_FAILED = 91
+const LOGITEM_WGPU_SWAPCHAIN_CREATE_MSAA_TEXTURE_FAILED = 92
+const LOGITEM_WGPU_SWAPCHAIN_CREATE_MSAA_VIEW_FAILED = 93
+const LOGITEM_WGPU_SWAPCHAIN_GETCURRENTTEXTURE_FAILED = 94
+const LOGITEM_WGPU_REQUEST_DEVICE_STATUS_ERROR = 95
+const LOGITEM_WGPU_REQUEST_DEVICE_STATUS_UNKNOWN = 96
+const LOGITEM_WGPU_REQUEST_ADAPTER_STATUS_UNAVAILABLE = 97
+const LOGITEM_WGPU_REQUEST_ADAPTER_STATUS_ERROR = 98
+const LOGITEM_WGPU_REQUEST_ADAPTER_STATUS_UNKNOWN = 99
+const LOGITEM_WGPU_CREATE_INSTANCE_FAILED = 100
+const LOGITEM_VULKAN_ALLOC_DEVICE_MEMORY_NO_SUITABLE_MEMORY_TYPE = 101
+const LOGITEM_VULKAN_ALLOCATE_MEMORY_FAILED = 102
+const LOGITEM_VULKAN_CREATE_INSTANCE_FAILED = 103
+const LOGITEM_VULKAN_ENUMERATE_PHYSICAL_DEVICES_FAILED = 104
+const LOGITEM_VULKAN_NO_PHYSICAL_DEVICES_FOUND = 105
+const LOGITEM_VULKAN_NO_SUITABLE_PHYSICAL_DEVICE_FOUND = 106
+const LOGITEM_VULKAN_CREATE_DEVICE_FAILED_EXTENSION_NOT_PRESENT = 107
+const LOGITEM_VULKAN_CREATE_DEVICE_FAILED_FEATURE_NOT_PRESENT = 108
+const LOGITEM_VULKAN_CREATE_DEVICE_FAILED_INITIALIZATION_FAILED = 109
+const LOGITEM_VULKAN_CREATE_DEVICE_FAILED_OTHER = 110
+const LOGITEM_VULKAN_CREATE_SURFACE_FAILED = 111
+const LOGITEM_VULKAN_CREATE_SWAPCHAIN_FAILED = 112
+const LOGITEM_VULKAN_SWAPCHAIN_CREATE_IMAGE_VIEW_FAILED = 113
+const LOGITEM_VULKAN_SWAPCHAIN_CREATE_IMAGE_FAILED = 114
+const LOGITEM_VULKAN_SWAPCHAIN_ALLOC_IMAGE_DEVICE_MEMORY_FAILED = 115
+const LOGITEM_VULKAN_SWAPCHAIN_BIND_IMAGE_MEMORY_FAILED = 116
+const LOGITEM_VULKAN_ACQUIRE_NEXT_IMAGE_FAILED = 117
+const LOGITEM_VULKAN_QUEUE_PRESENT_FAILED = 118
+const LOGITEM_IMAGE_DATA_SIZE_MISMATCH = 119
+const LOGITEM_DROPPED_FILE_PATH_TOO_LONG = 120
+const LOGITEM_CLIPBOARD_STRING_TOO_BIG = 121
+
+const PIXELFORMAT_DEFAULT = 0
+const PIXELFORMAT_NONE = 1
+const PIXELFORMAT_RGBA8 = 2
+const PIXELFORMAT_SRGB8A8 = 3
+const PIXELFORMAT_BGRA8 = 4
+const PIXELFORMAT_SBGRA8 = 5
+const PIXELFORMAT_DEPTH = 6
+const PIXELFORMAT_DEPTH_STENCIL = 7
+
+type environment_defaults_t = struct {
+    u32 color_format;
+    u32 depth_format;
+    i32 sample_count;
+}
+
+type metal_environment_t = struct {
+    anyptr device;
+}
+
+type d3d11_environment_t = struct {
+    anyptr device;
+    anyptr device_context;
+}
+
+type wgpu_environment_t = struct {
+    anyptr device;
+}
+
+type vulkan_environment_t = struct {
+    anyptr physical_device;
+    anyptr device;
+    anyptr queue;
+    u32 queue_family_index;
+}
+
+type environment_t = struct {
+    environment_defaults_t defaults;
+    metal_environment_t metal;
+    d3d11_environment_t d3d11;
+    wgpu_environment_t wgpu;
+    vulkan_environment_t vulkan;
+}
+
+type metal_swapchain_t = struct {
+    anyptr current_drawable;
+    anyptr depth_stencil_texture;
+    anyptr msaa_color_texture;
+}
+
+type d3d11_swapchain_t = struct {
+    anyptr render_view;
+    anyptr resolve_view;
+    anyptr depth_stencil_view;
+}
+
+type wgpu_swapchain_t = struct {
+    anyptr render_view;
+    anyptr resolve_view;
+    anyptr depth_stencil_view;
+}
+
+type vulkan_swapchain_t = struct {
+    anyptr render_image;
+    anyptr render_view;
+    anyptr resolve_image;
+    anyptr resolve_view;
+    anyptr depth_stencil_image;
+    anyptr depth_stencil_view;
+    anyptr render_finished_semaphore;
+    anyptr present_complete_semaphore;
+}
+
+type gl_swapchain_t = struct {
+    u32 framebuffer;
+}
+
+type swapchain_t = struct {
+    i32 width;
+    i32 height;
+    i32 sample_count;
+    u32 color_format;
+    u32 depth_format;
+    metal_swapchain_t metal;
+    d3d11_swapchain_t d3d11;
+    wgpu_swapchain_t wgpu;
+    vulkan_swapchain_t vulkan;
+    gl_swapchain_t gl;
+}
+
+type logger_t = struct {
+    anyptr func;
+    anyptr user_data;
+}
+
+type gl_desc_t = struct {
+    i32 major_version;
+    i32 minor_version;
+}
+
+type win32_desc_t = struct {
+    bool console_utf8;
+    bool console_create;
+    bool console_attach;
+}
+
+type html5_desc_t = struct {
+    rawptr<u8> canvas_selector;
+    bool canvas_resize;
+    bool preserve_drawing_buffer;
+    bool premultiplied_alpha;
+    bool ask_leave_site;
+    bool update_document_title;
+    bool bubble_mouse_events;
+    bool bubble_touch_events;
+    bool bubble_wheel_events;
+    bool bubble_key_events;
+    bool bubble_char_events;
+    bool use_emsc_set_main_loop;
+    bool emsc_set_main_loop_simulate_infinite_loop;
+}
+
+type ios_desc_t = struct {
+    bool keyboard_resizes_canvas;
+}
+
+type desc_t = struct {
+    anyptr init_cb;
+    anyptr frame_cb;
+    anyptr cleanup_cb;
+    anyptr event_cb;
+    anyptr user_data;
+    anyptr init_userdata_cb;
+    anyptr frame_userdata_cb;
+    anyptr cleanup_userdata_cb;
+    anyptr event_userdata_cb;
+    i32 width;
+    i32 height;
+    i32 sample_count;
+    i32 swap_interval;
+    bool high_dpi;
+    bool fullscreen;
+    bool alpha;
+    anyptr window_title;
+    bool enable_clipboard;
+    i32 clipboard_size;
+    bool enable_dragndrop;
+    i32 max_dropped_files;
+    i32 max_dropped_file_path_length;
+    icon_desc_t icon;
+    allocator_t allocator;
+    logger_t logger;
+    gl_desc_t gl;
+    win32_desc_t win32;
+    html5_desc_t html5;
+    ios_desc_t ios;
+}
+
+const HTML5FETCHERROR_FETCH_ERROR_NO_ERROR = 0
+const HTML5FETCHERROR_FETCH_ERROR_BUFFER_TOO_SMALL = 1
+const HTML5FETCHERROR_FETCH_ERROR_OTHER = 2
+
+type html5_fetch_response_t = struct {
+    bool succeeded;
+    u32 error_code;
+    i32 file_index;
+    range_t data;
+    range_t buffer;
+    anyptr user_data;
+}
+
+type html5_fetch_request_t = struct {
+    i32 dropped_file_index;
+    anyptr callback;
+    range_t buffer;
+    anyptr user_data;
+}
+
+const MOUSECURSOR_DEFAULT = 0
+const MOUSECURSOR_ARROW = 1
+const MOUSECURSOR_IBEAM = 2
+const MOUSECURSOR_CROSSHAIR = 3
+const MOUSECURSOR_POINTING_HAND = 4
+const MOUSECURSOR_RESIZE_EW = 5
+const MOUSECURSOR_RESIZE_NS = 6
+const MOUSECURSOR_RESIZE_NWSE = 7
+const MOUSECURSOR_RESIZE_NESW = 8
+const MOUSECURSOR_RESIZE_ALL = 9
+const MOUSECURSOR_NOT_ALLOWED = 10
+const MOUSECURSOR_CUSTOM_0 = 11
+const MOUSECURSOR_CUSTOM_1 = 12
+const MOUSECURSOR_CUSTOM_2 = 13
+const MOUSECURSOR_CUSTOM_3 = 14
+const MOUSECURSOR_CUSTOM_4 = 15
+const MOUSECURSOR_CUSTOM_5 = 16
+const MOUSECURSOR_CUSTOM_6 = 17
+const MOUSECURSOR_CUSTOM_7 = 18
+const MOUSECURSOR_CUSTOM_8 = 19
+const MOUSECURSOR_CUSTOM_9 = 20
+const MOUSECURSOR_CUSTOM_10 = 21
+const MOUSECURSOR_CUSTOM_11 = 22
+const MOUSECURSOR_CUSTOM_12 = 23
+const MOUSECURSOR_CUSTOM_13 = 24
+const MOUSECURSOR_CUSTOM_14 = 25
+const MOUSECURSOR_CUSTOM_15 = 26
+const MOUSECURSOR_NUM = 27
+
+type alloc_cb_t = fn(uint, anyptr): anyptr
+type free_cb_t = fn(anyptr, anyptr)
+type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type cb_t = fn()
+type event_cb_t = fn(rawptr<event_t>)
+type data_cb_t = fn(anyptr)
+type event_data_cb_t = fn(rawptr<event_t>, anyptr)
+type response_cb_t = fn(rawptr<html5_fetch_response_t>)
+

@@ -1,0 +1,151 @@
+// machine generated, do not edit
+
+#linkid sshape_build_plane
+fn build_plane(rawptr<buffer_t_t> buf, rawptr<plane_t_t> params): buffer_t_t
+#linkid sshape_build_box
+fn build_box(rawptr<buffer_t_t> buf, rawptr<box_t_t> params): buffer_t_t
+#linkid sshape_build_sphere
+fn build_sphere(rawptr<buffer_t_t> buf, rawptr<sphere_t_t> params): buffer_t_t
+#linkid sshape_build_cylinder
+fn build_cylinder(rawptr<buffer_t_t> buf, rawptr<cylinder_t_t> params): buffer_t_t
+#linkid sshape_build_torus
+fn build_torus(rawptr<buffer_t_t> buf, rawptr<torus_t_t> params): buffer_t_t
+#linkid sshape_plane_sizes
+fn plane_sizes(u32 tiles): sizes_t_t
+#linkid sshape_box_sizes
+fn box_sizes(u32 tiles): sizes_t_t
+#linkid sshape_sphere_sizes
+fn sphere_sizes(u32 slices, u32 stacks): sizes_t_t
+#linkid sshape_cylinder_sizes
+fn cylinder_sizes(u32 slices, u32 stacks): sizes_t_t
+#linkid sshape_torus_sizes
+fn torus_sizes(u32 sides, u32 rings): sizes_t_t
+#linkid sshape_element_range
+fn element_range(rawptr<buffer_t_t> buf): element_range_t_t
+#linkid sshape_vertex_buffer_desc
+fn vertex_buffer_desc(rawptr<buffer_t_t> buf): buffer_desc_t
+#linkid sshape_index_buffer_desc
+fn index_buffer_desc(rawptr<buffer_t_t> buf): buffer_desc_t
+#linkid sshape_vertex_buffer_layout_state
+fn vertex_buffer_layout_state(): vertex_buffer_layout_state_t
+#linkid sshape_position_vertex_attr_state
+fn position_vertex_attr_state(): vertex_attr_state_t
+#linkid sshape_normal_vertex_attr_state
+fn normal_vertex_attr_state(): vertex_attr_state_t
+#linkid sshape_texcoord_vertex_attr_state
+fn texcoord_vertex_attr_state(): vertex_attr_state_t
+#linkid sshape_color_vertex_attr_state
+fn color_vertex_attr_state(): vertex_attr_state_t
+#linkid sshape_color_4f
+fn color_4f(f32 r, f32 g, f32 b, f32 a): u32
+#linkid sshape_color_3f
+fn color_3f(f32 r, f32 g, f32 b): u32
+#linkid sshape_color_4b
+fn color_4b(u8 r, u8 g, u8 b, u8 a): u32
+#linkid sshape_color_3b
+fn color_3b(u8 r, u8 g, u8 b): u32
+#linkid sshape_mat4
+fn mat4(rawptr<f32> m): mat4_t_t
+#linkid sshape_mat4_transpose
+fn mat4_transpose(rawptr<f32> m): mat4_t_t
+
+type range_t = struct {
+    anyptr ptr;
+    int size;
+}
+
+type mat4_t_t = struct {
+    [[f32;4];4] m;
+}
+
+type vertex_t_t = struct {
+    f32 x;
+    f32 y;
+    f32 z;
+    u32 normal;
+    u16 u;
+    u16 v;
+    u32 color;
+}
+
+type element_range_t_t = struct {
+    i32 base_element;
+    i32 num_elements;
+}
+
+type sizes_item_t_t = struct {
+    u32 num;
+    u32 size;
+}
+
+type sizes_t_t = struct {
+    sizes_item_t_t vertices;
+    sizes_item_t_t indices;
+}
+
+type buffer_item_t_t = struct {
+    range_t buffer;
+    int data_size;
+    int shape_offset;
+}
+
+type buffer_t_t = struct {
+    bool valid;
+    buffer_item_t_t vertices;
+    buffer_item_t_t indices;
+}
+
+type plane_t_t = struct {
+    f32 width;
+    f32 depth;
+    u16 tiles;
+    u32 color;
+    bool random_colors;
+    bool merge;
+    mat4_t_t transform;
+}
+
+type box_t_t = struct {
+    f32 width;
+    f32 height;
+    f32 depth;
+    u16 tiles;
+    u32 color;
+    bool random_colors;
+    bool merge;
+    mat4_t_t transform;
+}
+
+type sphere_t_t = struct {
+    f32 radius;
+    u16 slices;
+    u16 stacks;
+    u32 color;
+    bool random_colors;
+    bool merge;
+    mat4_t_t transform;
+}
+
+type cylinder_t_t = struct {
+    f32 radius;
+    f32 height;
+    u16 slices;
+    u16 stacks;
+    u32 color;
+    bool random_colors;
+    bool merge;
+    mat4_t_t transform;
+}
+
+type torus_t_t = struct {
+    f32 radius;
+    f32 ring_radius;
+    u16 sides;
+    u16 rings;
+    u32 color;
+    bool random_colors;
+    bool merge;
+    mat4_t_t transform;
+}
+
+

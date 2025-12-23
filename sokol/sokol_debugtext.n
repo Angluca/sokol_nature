@@ -1,0 +1,136 @@
+// machine generated, do not edit
+
+#linkid sdtx_setup
+fn setup(rawptr<desc_t_t> desc)
+#linkid sdtx_shutdown
+fn shutdown()
+#linkid sdtx_font_kc853
+fn font_kc853(): font_desc_t_t
+#linkid sdtx_font_kc854
+fn font_kc854(): font_desc_t_t
+#linkid sdtx_font_z1013
+fn font_z1013(): font_desc_t_t
+#linkid sdtx_font_cpc
+fn font_cpc(): font_desc_t_t
+#linkid sdtx_font_c64
+fn font_c64(): font_desc_t_t
+#linkid sdtx_font_oric
+fn font_oric(): font_desc_t_t
+#linkid sdtx_make_context
+fn make_context(rawptr<context_desc_t_t> desc): context_t
+#linkid sdtx_destroy_context
+fn destroy_context(context_t ctx)
+#linkid sdtx_set_context
+fn set_context(context_t ctx)
+#linkid sdtx_get_context
+fn get_context(): context_t
+#linkid sdtx_default_context
+fn default_context(): context_t
+#linkid sdtx_draw
+fn draw()
+#linkid sdtx_context_draw
+fn context_draw(context_t ctx)
+#linkid sdtx_draw_layer
+fn draw_layer(i32 layer_id)
+#linkid sdtx_context_draw_layer
+fn context_draw_layer(context_t ctx, i32 layer_id)
+#linkid sdtx_layer
+fn layer(i32 layer_id)
+#linkid sdtx_font
+fn font(i32 font_index)
+#linkid sdtx_canvas
+fn canvas(f32 w, f32 h)
+#linkid sdtx_origin
+fn origin(f32 x, f32 y)
+#linkid sdtx_home
+fn home()
+#linkid sdtx_pos
+fn pos(f32 x, f32 y)
+#linkid sdtx_pos_x
+fn pos_x(f32 x)
+#linkid sdtx_pos_y
+fn pos_y(f32 y)
+#linkid sdtx_move
+fn move(f32 dx, f32 dy)
+#linkid sdtx_move_x
+fn move_x(f32 dx)
+#linkid sdtx_move_y
+fn move_y(f32 dy)
+#linkid sdtx_crlf
+fn crlf()
+#linkid sdtx_color3b
+fn color3b(u8 r, u8 g, u8 b)
+#linkid sdtx_color3f
+fn color3f(f32 r, f32 g, f32 b)
+#linkid sdtx_color4b
+fn color4b(u8 r, u8 g, u8 b, u8 a)
+#linkid sdtx_color4f
+fn color4f(f32 r, f32 g, f32 b, f32 a)
+#linkid sdtx_color1i
+fn color1i(u32 rgba)
+#linkid sdtx_putc
+fn putc(u8 c)
+#linkid sdtx_puts
+fn puts(rawptr<u8> str)
+#linkid sdtx_putr
+fn putr(rawptr<u8> str, i32 len)
+#linkid sdtx_get_cleared_fmt_buffer
+fn get_cleared_fmt_buffer(): range_t
+
+const LOGITEM_OK = 0
+const LOGITEM_MALLOC_FAILED = 1
+const LOGITEM_ADD_COMMIT_LISTENER_FAILED = 2
+const LOGITEM_COMMAND_BUFFER_FULL = 3
+const LOGITEM_CONTEXT_POOL_EXHAUSTED = 4
+const LOGITEM_CANNOT_DESTROY_DEFAULT_CONTEXT = 5
+
+type logger_t_t = struct {
+    log_cb_t func;
+    anyptr user_data;
+}
+
+type context_t = struct {
+    u32 id;
+}
+
+type range_t = struct {
+    anyptr ptr;
+    int size;
+}
+
+type font_desc_t_t = struct {
+    range_t data;
+    u8 first_char;
+    u8 last_char;
+}
+
+type context_desc_t_t = struct {
+    i32 max_commands;
+    i32 char_buf_size;
+    f32 canvas_width;
+    f32 canvas_height;
+    i32 tab_width;
+    u32 color_format;
+    u32 depth_format;
+    i32 sample_count;
+}
+
+type allocator_t_t = struct {
+    alloc_cb_t alloc_fn;
+    free_cb_t free_fn;
+    anyptr user_data;
+}
+
+type desc_t_t = struct {
+    i32 context_pool_size;
+    i32 printf_buf_size;
+    [font_desc_t_t;8] fonts;
+    context_desc_t_t context;
+    allocator_t_t allocator;
+    logger_t_t logger;
+}
+
+type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type alloc_cb_t = fn(uint, anyptr): anyptr
+type free_cb_t = fn(anyptr, anyptr)
+

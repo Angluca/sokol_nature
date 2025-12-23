@@ -1,0 +1,6 @@
+// machine generated, do not edit
+
+#linkid slog_func
+fn func(rawptr<u8> tag, u32 log_level, u32 log_item, rawptr<u8> message, u32 line_nr, rawptr<u8> filename, anyptr user_data)
+
+

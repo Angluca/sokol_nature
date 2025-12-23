@@ -1,0 +1,241 @@
+// machine generated, do not edit
+
+#linkid sgl_setup
+fn setup(rawptr<desc_t_t> desc)
+#linkid sgl_shutdown
+fn shutdown()
+#linkid sgl_rad
+fn rad(f32 deg): f32
+#linkid sgl_deg
+fn deg(f32 rad): f32
+#linkid sgl_error
+fn error(): error_t_t
+#linkid sgl_context_error
+fn context_error(context_t ctx): error_t_t
+#linkid sgl_make_context
+fn make_context(rawptr<context_desc_t_t> desc): context_t
+#linkid sgl_destroy_context
+fn destroy_context(context_t ctx)
+#linkid sgl_set_context
+fn set_context(context_t ctx)
+#linkid sgl_get_context
+fn get_context(): context_t
+#linkid sgl_default_context
+fn default_context(): context_t
+#linkid sgl_num_vertices
+fn num_vertices(): i32
+#linkid sgl_num_commands
+fn num_commands(): i32
+#linkid sgl_draw
+fn draw()
+#linkid sgl_context_draw
+fn context_draw(context_t ctx)
+#linkid sgl_draw_layer
+fn draw_layer(i32 layer_id)
+#linkid sgl_context_draw_layer
+fn context_draw_layer(context_t ctx, i32 layer_id)
+#linkid sgl_make_pipeline
+fn make_pipeline(rawptr<pipeline_desc_t> desc): pipeline_t
+#linkid sgl_context_make_pipeline
+fn context_make_pipeline(context_t ctx, rawptr<pipeline_desc_t> desc): pipeline_t
+#linkid sgl_destroy_pipeline
+fn destroy_pipeline(pipeline_t pip)
+#linkid sgl_defaults
+fn defaults()
+#linkid sgl_viewport
+fn viewport(i32 x, i32 y, i32 w, i32 h, bool origin_top_left)
+#linkid sgl_viewportf
+fn viewportf(f32 x, f32 y, f32 w, f32 h, bool origin_top_left)
+#linkid sgl_scissor_rect
+fn scissor_rect(i32 x, i32 y, i32 w, i32 h, bool origin_top_left)
+#linkid sgl_scissor_rectf
+fn scissor_rectf(f32 x, f32 y, f32 w, f32 h, bool origin_top_left)
+#linkid sgl_enable_texture
+fn enable_texture()
+#linkid sgl_disable_texture
+fn disable_texture()
+#linkid sgl_texture
+fn texture(view_t tex_view, sampler_t smp)
+#linkid sgl_layer
+fn layer(i32 layer_id)
+#linkid sgl_load_default_pipeline
+fn load_default_pipeline()
+#linkid sgl_load_pipeline
+fn load_pipeline(pipeline_t pip)
+#linkid sgl_push_pipeline
+fn push_pipeline()
+#linkid sgl_pop_pipeline
+fn pop_pipeline()
+#linkid sgl_matrix_mode_modelview
+fn matrix_mode_modelview()
+#linkid sgl_matrix_mode_projection
+fn matrix_mode_projection()
+#linkid sgl_matrix_mode_texture
+fn matrix_mode_texture()
+#linkid sgl_load_identity
+fn load_identity()
+#linkid sgl_load_matrix
+fn load_matrix(rawptr<f32> m)
+#linkid sgl_load_transpose_matrix
+fn load_transpose_matrix(rawptr<f32> m)
+#linkid sgl_mult_matrix
+fn mult_matrix(rawptr<f32> m)
+#linkid sgl_mult_transpose_matrix
+fn mult_transpose_matrix(rawptr<f32> m)
+#linkid sgl_rotate
+fn rotate(f32 angle_rad, f32 x, f32 y, f32 z)
+#linkid sgl_scale
+fn scale(f32 x, f32 y, f32 z)
+#linkid sgl_translate
+fn translate(f32 x, f32 y, f32 z)
+#linkid sgl_frustum
+fn frustum(f32 l, f32 r, f32 b, f32 t, f32 n, f32 f)
+#linkid sgl_ortho
+fn ortho(f32 l, f32 r, f32 b, f32 t, f32 n, f32 f)
+#linkid sgl_perspective
+fn perspective(f32 fov_y, f32 aspect, f32 z_near, f32 z_far)
+#linkid sgl_lookat
+fn lookat(f32 eye_x, f32 eye_y, f32 eye_z, f32 center_x, f32 center_y, f32 center_z, f32 up_x, f32 up_y, f32 up_z)
+#linkid sgl_push_matrix
+fn push_matrix()
+#linkid sgl_pop_matrix
+fn pop_matrix()
+#linkid sgl_t2f
+fn t2f(f32 u, f32 v)
+#linkid sgl_c3f
+fn c3f(f32 r, f32 g, f32 b)
+#linkid sgl_c4f
+fn c4f(f32 r, f32 g, f32 b, f32 a)
+#linkid sgl_c3b
+fn c3b(u8 r, u8 g, u8 b)
+#linkid sgl_c4b
+fn c4b(u8 r, u8 g, u8 b, u8 a)
+#linkid sgl_c1i
+fn c1i(u32 rgba)
+#linkid sgl_point_size
+fn point_size(f32 s)
+#linkid sgl_begin_points
+fn begin_points()
+#linkid sgl_begin_lines
+fn begin_lines()
+#linkid sgl_begin_line_strip
+fn begin_line_strip()
+#linkid sgl_begin_triangles
+fn begin_triangles()
+#linkid sgl_begin_triangle_strip
+fn begin_triangle_strip()
+#linkid sgl_begin_quads
+fn begin_quads()
+#linkid sgl_v2f
+fn v2f(f32 x, f32 y)
+#linkid sgl_v3f
+fn v3f(f32 x, f32 y, f32 z)
+#linkid sgl_v2f_t2f
+fn v2f_t2f(f32 x, f32 y, f32 u, f32 v)
+#linkid sgl_v3f_t2f
+fn v3f_t2f(f32 x, f32 y, f32 z, f32 u, f32 v)
+#linkid sgl_v2f_c3f
+fn v2f_c3f(f32 x, f32 y, f32 r, f32 g, f32 b)
+#linkid sgl_v2f_c3b
+fn v2f_c3b(f32 x, f32 y, u8 r, u8 g, u8 b)
+#linkid sgl_v2f_c4f
+fn v2f_c4f(f32 x, f32 y, f32 r, f32 g, f32 b, f32 a)
+#linkid sgl_v2f_c4b
+fn v2f_c4b(f32 x, f32 y, u8 r, u8 g, u8 b, u8 a)
+#linkid sgl_v2f_c1i
+fn v2f_c1i(f32 x, f32 y, u32 rgba)
+#linkid sgl_v3f_c3f
+fn v3f_c3f(f32 x, f32 y, f32 z, f32 r, f32 g, f32 b)
+#linkid sgl_v3f_c3b
+fn v3f_c3b(f32 x, f32 y, f32 z, u8 r, u8 g, u8 b)
+#linkid sgl_v3f_c4f
+fn v3f_c4f(f32 x, f32 y, f32 z, f32 r, f32 g, f32 b, f32 a)
+#linkid sgl_v3f_c4b
+fn v3f_c4b(f32 x, f32 y, f32 z, u8 r, u8 g, u8 b, u8 a)
+#linkid sgl_v3f_c1i
+fn v3f_c1i(f32 x, f32 y, f32 z, u32 rgba)
+#linkid sgl_v2f_t2f_c3f
+fn v2f_t2f_c3f(f32 x, f32 y, f32 u, f32 v, f32 r, f32 g, f32 b)
+#linkid sgl_v2f_t2f_c3b
+fn v2f_t2f_c3b(f32 x, f32 y, f32 u, f32 v, u8 r, u8 g, u8 b)
+#linkid sgl_v2f_t2f_c4f
+fn v2f_t2f_c4f(f32 x, f32 y, f32 u, f32 v, f32 r, f32 g, f32 b, f32 a)
+#linkid sgl_v2f_t2f_c4b
+fn v2f_t2f_c4b(f32 x, f32 y, f32 u, f32 v, u8 r, u8 g, u8 b, u8 a)
+#linkid sgl_v2f_t2f_c1i
+fn v2f_t2f_c1i(f32 x, f32 y, f32 u, f32 v, u32 rgba)
+#linkid sgl_v3f_t2f_c3f
+fn v3f_t2f_c3f(f32 x, f32 y, f32 z, f32 u, f32 v, f32 r, f32 g, f32 b)
+#linkid sgl_v3f_t2f_c3b
+fn v3f_t2f_c3b(f32 x, f32 y, f32 z, f32 u, f32 v, u8 r, u8 g, u8 b)
+#linkid sgl_v3f_t2f_c4f
+fn v3f_t2f_c4f(f32 x, f32 y, f32 z, f32 u, f32 v, f32 r, f32 g, f32 b, f32 a)
+#linkid sgl_v3f_t2f_c4b
+fn v3f_t2f_c4b(f32 x, f32 y, f32 z, f32 u, f32 v, u8 r, u8 g, u8 b, u8 a)
+#linkid sgl_v3f_t2f_c1i
+fn v3f_t2f_c1i(f32 x, f32 y, f32 z, f32 u, f32 v, u32 rgba)
+#linkid sgl_end
+fn end()
+
+const LOGITEM_OK = 0
+const LOGITEM_MALLOC_FAILED = 1
+const LOGITEM_MAKE_PIPELINE_FAILED = 2
+const LOGITEM_PIPELINE_POOL_EXHAUSTED = 3
+const LOGITEM_ADD_COMMIT_LISTENER_FAILED = 4
+const LOGITEM_CONTEXT_POOL_EXHAUSTED = 5
+const LOGITEM_CANNOT_DESTROY_DEFAULT_CONTEXT = 6
+
+type logger_t_t = struct {
+    log_cb_t func;
+    anyptr user_data;
+}
+
+type pipeline_t = struct {
+    u32 id;
+}
+
+type context_t = struct {
+    u32 id;
+}
+
+type error_t_t = struct {
+    bool any_;
+    bool vertices_full;
+    bool uniforms_full;
+    bool commands_full;
+    bool stack_overflow;
+    bool stack_underflow;
+    bool no_context;
+}
+
+type context_desc_t_t = struct {
+    i32 max_vertices;
+    i32 max_commands;
+    u32 color_format;
+    u32 depth_format;
+    i32 sample_count;
+}
+
+type allocator_t_t = struct {
+    alloc_cb_t alloc_fn;
+    free_cb_t free_fn;
+    anyptr user_data;
+}
+
+type desc_t_t = struct {
+    i32 max_vertices;
+    i32 max_commands;
+    i32 context_pool_size;
+    i32 pipeline_pool_size;
+    u32 color_format;
+    u32 depth_format;
+    i32 sample_count;
+    u32 face_winding;
+    allocator_t_t allocator;
+    logger_t_t logger;
+}
+
+type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type alloc_cb_t = fn(uint, anyptr): anyptr
+type free_cb_t = fn(anyptr, anyptr)
+

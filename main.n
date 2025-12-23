@@ -1,0 +1,41 @@
+import sokol_nature.sokol.sokol_app as sapp
+import sokol_nature.sokol.sokol_gfx as sg
+import sokol_nature.sokol.sokol_glue as sglue
+//import sokol_nature.sokol.sokol_log as slog
+
+var pass_action = sg.pass_action_t{}
+fn init() {
+    var desc = sg.desc_t{}
+    desc.environment = sglue.environment()
+    sg.setup(&desc)
+    pass_action.colors[0].load_action = sg.LOADACTION_CLEAR
+    pass_action.colors[0].clear_value = sg.color_t { r: 0.0, g: 0.0, b: 1.0, a: 1.0 }
+}
+
+fn frame() {
+    var g = pass_action.colors[0].clear_value.g + 0.01
+    if g > 1.0 { g = 0 }
+    pass_action.colors[0].clear_value.g = g
+    var pass = sg.pass_t {action: pass_action, swapchain: sglue.swapchain()}
+    sg.begin_pass(&pass)
+    sg.end_pass()
+    sg.commit()
+}
+
+fn cleanup() {
+    sg.shutdown()
+}
+
+fn main() {
+    var ret = sapp.desc_t {
+        init_cb: init as anyptr,
+        frame_cb: frame as anyptr,
+        cleanup_cb: cleanup as anyptr,
+        width: 640,
+        height: 480,
+        window_title: 'clear'.ref(),
+        icon: sapp.icon_desc_t { sokol_default: true },
+    }
+    sapp.run(&ret)
+}
+

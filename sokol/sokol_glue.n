@@ -1,0 +1,9 @@
+// machine generated, do not edit
+import sokol_nature.sokol.sokol_gfx as sg
+
+#linkid sglue_environment
+fn environment(): sg.environment_t
+#linkid sglue_swapchain
+fn swapchain(): sg.swapchain_t
+
+
