@@ -11,8 +11,10 @@ https://github.com/floooh/sokol
 #LIB_SOURCE= ~/SDK/Sokols/sokol
 LIB_SOURCE= ./c
 LIB_DIR= lib
-APP_NAME= clear
-APP_DIR= examples/$(APP_NAME)
+#APP_NAME= clear
+#APP_DIR= examples/$(APP_NAME)
+APP_NAME= main
+APP_DIR= 
 OS= macos
 # OS = macos/windows/linux/wasm or null
 #=================================
@@ -34,14 +36,14 @@ endif #==============================
 ifeq ($(OS),macos) # ------ macos
 CFLAGS+= -x objective-c -DSOKOL_GLCORE  # -arch x86_64
 FRAMEWORKS= -framework Cocoa \
-			-framework QuartzCore \
 			-framework OpenGL \
+			-framework IOKit \
 			-framework AudioToolbox \
-			-framework AVFoundation \
-			#-framework Metal \
-			#-framework MetalKit \
-			#-framework IOKit \
+			#-framework AVFoundation \
+			#-framework QuartzCore \
 			#-framework Foundation
+			#-framework Metal \
+			#-framework MetalKit
 #------------------------------------
 BUILD= $(CGEN)
 LDFLAGS+= $(FRAMEWORKS)
@@ -87,12 +89,12 @@ cc:
 ifneq ($(wildcard $(APP).glsl),)
 	make build_glsl
 endif #==============================
-	nature build --ldflags '$(LDFLAGS)' main.n
 
-#ifneq ($(wildcard $(APP_DIR)),)
-	#nature build -o ./$(APP) ./$(APP_DIR)/main.n
-#else
-#endif #==============================
+ifneq ($(wildcard $(APP_DIR)),)
+	nature build --ldflags '$(LDFLAGS)' -o ./$(APP) ./$(APP_DIR)/main.n
+else
+	nature build --ldflags '$(LDFLAGS)' main.n
+endif #==============================
 
 SOKOL_EXISTS := $(shell command -v sokol-shdc 2>/dev/null) 
 build_glsl:
@@ -108,7 +110,7 @@ run:
 	@make && ./$(APP)
 
 clean:
-	rm -rf ./$(APP) ./$(APP_DIR) ./$(OBJS)
+	rm -rf ./$(APP) ./$(OBJS)
 
 cleanall:
 	make clean

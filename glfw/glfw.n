@@ -1,0 +1,825 @@
+const VERSION_MAJOR = 3
+const VERSION_MINOR = 4
+const VERSION_REVISION = 0
+
+const TRUE = 1
+const FALSE = 0
+
+const RELEASE = 0
+const PRESS = 1
+const REPEAT = 2
+
+const HAT_CENTERED = 0
+const HAT_UP = 1
+const HAT_RIGHT = 2
+const HAT_DOWN = 4
+const HAT_LEFT = 8
+const HAT_RIGHT_UP = HAT_RIGHT | HAT_UP
+const HAT_RIGHT_DOWN = HAT_RIGHT | HAT_DOWN
+const HAT_LEFT_UP = HAT_LEFT  | HAT_UP
+const HAT_LEFT_DOWN = HAT_LEFT  | HAT_DOWN
+
+const KEY_UNKNOWN = -1
+
+
+const KEY_SPACE = 32
+const KEY_APOSTROPHE = 39  /* ' */
+const KEY_COMMA = 44  /* , */
+const KEY_MINUS = 45  /* - */
+const KEY_PERIOD = 46  /* . */
+const KEY_SLASH = 47  /* / */
+const KEY_0 = 48
+const KEY_1 = 49
+const KEY_2 = 50
+const KEY_3 = 51
+const KEY_4 = 52
+const KEY_5 = 53
+const KEY_6 = 54
+const KEY_7 = 55
+const KEY_8 = 56
+const KEY_9 = 57
+const KEY_SEMICOLON = 59  /* ; */
+const KEY_EQUAL = 61  /* = */
+const KEY_A = 65
+const KEY_B = 66
+const KEY_C = 67
+const KEY_D = 68
+const KEY_E = 69
+const KEY_F = 70
+const KEY_G = 71
+const KEY_H = 72
+const KEY_I = 73
+const KEY_J = 74
+const KEY_K = 75
+const KEY_L = 76
+const KEY_M = 77
+const KEY_N = 78
+const KEY_O = 79
+const KEY_P = 80
+const KEY_Q = 81
+const KEY_R = 82
+const KEY_S = 83
+const KEY_T = 84
+const KEY_U = 85
+const KEY_V = 86
+const KEY_W = 87
+const KEY_X = 88
+const KEY_Y = 89
+const KEY_Z = 90
+const KEY_LEFT_BRACKET = 91  /* [ */
+const KEY_BACKSLASH = 92  /* \ */
+const KEY_RIGHT_BRACKET = 93  /* ] */
+const KEY_GRAVE_ACCENT = 96  /* ` */
+const KEY_WORLD_1 = 161 /* non-US #1 */
+const KEY_WORLD_2 = 162 /* non-US #2 */
+
+const KEY_ESCAPE = 256
+const KEY_ENTER = 257
+const KEY_TAB = 258
+const KEY_BACKSPACE = 259
+const KEY_INSERT = 260
+const KEY_DELETE = 261
+const KEY_RIGHT = 262
+const KEY_LEFT = 263
+const KEY_DOWN = 264
+const KEY_UP = 265
+const KEY_PAGE_UP = 266
+const KEY_PAGE_DOWN = 267
+const KEY_HOME = 268
+const KEY_END = 269
+const KEY_CAPS_LOCK = 280
+const KEY_SCROLL_LOCK = 281
+const KEY_NUM_LOCK = 282
+const KEY_PRINT_SCREEN = 283
+const KEY_PAUSE = 284
+const KEY_F1 = 290
+const KEY_F2 = 291
+const KEY_F3 = 292
+const KEY_F4 = 293
+const KEY_F5 = 294
+const KEY_F6 = 295
+const KEY_F7 = 296
+const KEY_F8 = 297
+const KEY_F9 = 298
+const KEY_F10 = 299
+const KEY_F11 = 300
+const KEY_F12 = 301
+const KEY_F13 = 302
+const KEY_F14 = 303
+const KEY_F15 = 304
+const KEY_F16 = 305
+const KEY_F17 = 306
+const KEY_F18 = 307
+const KEY_F19 = 308
+const KEY_F20 = 309
+const KEY_F21 = 310
+const KEY_F22 = 311
+const KEY_F23 = 312
+const KEY_F24 = 313
+const KEY_F25 = 314
+const KEY_KP_0 = 320
+const KEY_KP_1 = 321
+const KEY_KP_2 = 322
+const KEY_KP_3 = 323
+const KEY_KP_4 = 324
+const KEY_KP_5 = 325
+const KEY_KP_6 = 326
+const KEY_KP_7 = 327
+const KEY_KP_8 = 328
+const KEY_KP_9 = 329
+const KEY_KP_DECIMAL = 330
+const KEY_KP_DIVIDE = 331
+const KEY_KP_MULTIPLY = 332
+const KEY_KP_SUBTRACT = 333
+const KEY_KP_ADD = 334
+const KEY_KP_ENTER = 335
+const KEY_KP_EQUAL = 336
+const KEY_LEFT_SHIFT = 340
+const KEY_LEFT_CONTROL = 341
+const KEY_LEFT_ALT = 342
+const KEY_LEFT_SUPER = 343
+const KEY_RIGHT_SHIFT = 344
+const KEY_RIGHT_CONTROL = 345
+const KEY_RIGHT_ALT = 346
+const KEY_RIGHT_SUPER = 347
+const KEY_MENU = 348
+
+const KEY_LAST = KEY_MENU
+
+
+const MOD_SHIFT = 0x0001
+const MOD_CONTROL = 0x0002
+const MOD_ALT = 0x0004
+const MOD_SUPER = 0x0008
+const MOD_CAPS_LOCK = 0x0010
+const MOD_NUM_LOCK = 0x0020
+
+const MOUSE_BUTTON_1 = 0
+const MOUSE_BUTTON_2 = 1
+const MOUSE_BUTTON_3 = 2
+const MOUSE_BUTTON_4 = 3
+const MOUSE_BUTTON_5 = 4
+const MOUSE_BUTTON_6 = 5
+const MOUSE_BUTTON_7 = 6
+const MOUSE_BUTTON_8 = 7
+const MOUSE_BUTTON_LAST = MOUSE_BUTTON_8
+const MOUSE_BUTTON_LEFT = MOUSE_BUTTON_1
+const MOUSE_BUTTON_RIGHT = MOUSE_BUTTON_2
+const MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3
+
+const JOYSTICK_1 = 0
+const JOYSTICK_2 = 1
+const JOYSTICK_3 = 2
+const JOYSTICK_4 = 3
+const JOYSTICK_5 = 4
+const JOYSTICK_6 = 5
+const JOYSTICK_7 = 6
+const JOYSTICK_8 = 7
+const JOYSTICK_9 = 8
+const JOYSTICK_10 = 9
+const JOYSTICK_11 = 10
+const JOYSTICK_12 = 11
+const JOYSTICK_13 = 12
+const JOYSTICK_14 = 13
+const JOYSTICK_15 = 14
+const JOYSTICK_16 = 15
+const JOYSTICK_LAST = JOYSTICK_16
+
+const GAMEPAD_BUTTON_A = 0
+const GAMEPAD_BUTTON_B = 1
+const GAMEPAD_BUTTON_X = 2
+const GAMEPAD_BUTTON_Y = 3
+const GAMEPAD_BUTTON_LEFT_BUMPER = 4
+const GAMEPAD_BUTTON_RIGHT_BUMPER = 5
+const GAMEPAD_BUTTON_BACK = 6
+const GAMEPAD_BUTTON_START = 7
+const GAMEPAD_BUTTON_GUIDE = 8
+const GAMEPAD_BUTTON_LEFT_THUMB = 9
+const GAMEPAD_BUTTON_RIGHT_THUMB = 10
+const GAMEPAD_BUTTON_DPAD_UP = 11
+const GAMEPAD_BUTTON_DPAD_RIGHT = 12
+const GAMEPAD_BUTTON_DPAD_DOWN = 13
+const GAMEPAD_BUTTON_DPAD_LEFT = 14
+const GAMEPAD_BUTTON_LAST = GAMEPAD_BUTTON_DPAD_LEFT
+
+const GAMEPAD_BUTTON_CROSS = GAMEPAD_BUTTON_A
+const GAMEPAD_BUTTON_CIRCLE = GAMEPAD_BUTTON_B
+const GAMEPAD_BUTTON_SQUARE = GAMEPAD_BUTTON_X
+const GAMEPAD_BUTTON_TRIANGLE = GAMEPAD_BUTTON_Y
+
+const GAMEPAD_AXIS_LEFT_X = 0
+const GAMEPAD_AXIS_LEFT_Y = 1
+const GAMEPAD_AXIS_RIGHT_X = 2
+const GAMEPAD_AXIS_RIGHT_Y = 3
+const GAMEPAD_AXIS_LEFT_TRIGGER = 4
+const GAMEPAD_AXIS_RIGHT_TRIGGER = 5
+const GAMEPAD_AXIS_LAST = GAMEPAD_AXIS_RIGHT_TRIGGER
+
+const NO_ERROR = 0
+const NOT_INITIALIZED = 0x00010001
+const NO_CURRENT_CONTEXT = 0x00010002
+const INVALID_ENUM = 0x00010003
+const INVALID_VALUE = 0x00010004
+const OUT_OF_MEMORY = 0x00010005
+const API_UNAVAILABLE = 0x00010006
+const VERSION_UNAVAILABLE = 0x00010007
+const PLATFORM_ERROR = 0x00010008
+const FORMAT_UNAVAILABLE = 0x00010009
+const NO_WINDOW_CONTEXT = 0x0001000A
+const CURSOR_UNAVAILABLE = 0x0001000B
+const FEATURE_UNAVAILABLE = 0x0001000C
+const FEATURE_UNIMPLEMENTED = 0x0001000D
+const PLATFORM_UNAVAILABLE = 0x0001000E
+
+const FOCUSED = 0x00020001
+const ICONIFIED = 0x00020002
+const RESIZABLE = 0x00020003
+const VISIBLE = 0x00020004
+const DECORATED = 0x00020005
+const AUTO_ICONIFY = 0x00020006
+const FLOATING = 0x00020007
+const MAXIMIZED = 0x00020008
+const CENTER_CURSOR = 0x00020009
+const TRANSPARENT_FRAMEBUFFER = 0x0002000A
+const HOVERED = 0x0002000B
+const FOCUS_ON_SHOW = 0x0002000C
+
+const MOUSE_PASSTHROUGH = 0x0002000D
+
+const POSITION_X = 0x0002000E
+
+const POSITION_Y = 0x0002000F
+
+const RED_BITS = 0x00021001
+const GREEN_BITS = 0x00021002
+const BLUE_BITS = 0x00021003
+const ALPHA_BITS = 0x00021004
+const DEPTH_BITS = 0x00021005
+const STENCIL_BITS = 0x00021006
+const ACCUM_RED_BITS = 0x00021007
+const ACCUM_GREEN_BITS = 0x00021008
+const ACCUM_BLUE_BITS = 0x00021009
+const ACCUM_ALPHA_BITS = 0x0002100A
+const AUX_BUFFERS = 0x0002100B
+const STEREO = 0x0002100C
+const SAMPLES = 0x0002100D
+const SRGB_CAPABLE = 0x0002100E
+const REFRESH_RATE = 0x0002100F
+const DOUBLEBUFFER = 0x00021010
+
+const CLIENT_API = 0x00022001
+const CONTEXT_VERSION_MAJOR = 0x00022002
+const CONTEXT_VERSION_MINOR = 0x00022003
+const CONTEXT_REVISION = 0x00022004
+const CONTEXT_ROBUSTNESS = 0x00022005
+const OPENGL_FORWARD_COMPAT = 0x00022006
+const CONTEXT_DEBUG = 0x00022007
+const OPENGL_DEBUG_CONTEXT = CONTEXT_DEBUG
+const OPENGL_PROFILE = 0x00022008
+const CONTEXT_RELEASE_BEHAVIOR = 0x00022009
+const CONTEXT_NO_ERROR = 0x0002200A
+const CONTEXT_CREATION_API = 0x0002200B
+const SCALE_TO_MONITOR = 0x0002200C
+const SCALE_FRAMEBUFFER = 0x0002200D
+const COCOA_RETINA_FRAMEBUFFER = 0x00023001
+const COCOA_FRAME_NAME = 0x00023002
+const COCOA_GRAPHICS_SWITCHING = 0x00023003
+const X11_CLASS_NAME = 0x00024001
+const X11_INSTANCE_NAME = 0x00024002
+const WIN32_KEYBOARD_MENU = 0x00025001
+const WIN32_SHOWDEFAULT = 0x00025002
+const WAYLAND_APP_ID = 0x00026001
+
+const NO_API = 0
+const OPENGL_API = 0x00030001
+const OPENGL_ES_API = 0x00030002
+
+const NO_ROBUSTNESS = 0
+const NO_RESET_NOTIFICATION = 0x00031001
+const LOSE_CONTEXT_ON_RESET = 0x00031002
+
+const OPENGL_ANY_PROFILE = 0
+const OPENGL_CORE_PROFILE = 0x00032001
+const OPENGL_COMPAT_PROFILE = 0x00032002
+
+const CURSOR = 0x00033001
+const STICKY_KEYS = 0x00033002
+const STICKY_MOUSE_BUTTONS = 0x00033003
+const LOCK_KEY_MODS = 0x00033004
+const RAW_MOUSE_MOTION = 0x00033005
+
+const CURSOR_NORMAL = 0x00034001
+const CURSOR_HIDDEN = 0x00034002
+const CURSOR_DISABLED = 0x00034003
+const CURSOR_CAPTURED = 0x00034004
+
+const ANY_RELEASE_BEHAVIOR = 0
+const RELEASE_BEHAVIOR_FLUSH = 0x00035001
+const RELEASE_BEHAVIOR_NONE = 0x00035002
+
+const NATIVE_CONTEXT_API = 0x00036001
+const EGL_CONTEXT_API = 0x00036002
+const OSMESA_CONTEXT_API = 0x00036003
+
+const ANGLE_PLATFORM_TYPE_NONE = 0x00037001
+const ANGLE_PLATFORM_TYPE_OPENGL = 0x00037002
+const ANGLE_PLATFORM_TYPE_OPENGLES = 0x00037003
+const ANGLE_PLATFORM_TYPE_D3D9 = 0x00037004
+const ANGLE_PLATFORM_TYPE_D3D11 = 0x00037005
+const ANGLE_PLATFORM_TYPE_VULKAN = 0x00037007
+const ANGLE_PLATFORM_TYPE_METAL = 0x00037008
+
+const WAYLAND_PREFER_LIBDECOR = 0x00038001
+const WAYLAND_DISABLE_LIBDECOR = 0x00038002
+
+const ANY_POSITION = 0x80000000
+
+const ARROW_CURSOR = 0x00036001
+const IBEAM_CURSOR = 0x00036002
+const CROSSHAIR_CURSOR = 0x00036003
+const POINTING_HAND_CURSOR = 0x00036004
+const RESIZE_EW_CURSOR = 0x00036005
+const RESIZE_NS_CURSOR = 0x00036006
+const RESIZE_NWSE_CURSOR = 0x00036007
+const RESIZE_NESW_CURSOR = 0x00036008
+const RESIZE_ALL_CURSOR = 0x00036009
+const NOT_ALLOWED_CURSOR = 0x0003600A
+const HRESIZE_CURSOR = RESIZE_EW_CURSOR
+const VRESIZE_CURSOR = RESIZE_NS_CURSOR
+const HAND_CURSOR = POINTING_HAND_CURSOR
+
+const CONNECTED = 0x00040001
+const DISCONNECTED = 0x00040002
+
+const JOYSTICK_HAT_BUTTONS = 0x00050001
+const ANGLE_PLATFORM_TYPE = 0x00050002
+const PLATFORM = 0x00050003
+const COCOA_CHDIR_RESOURCES = 0x00051001
+const COCOA_MENUBAR = 0x00051002
+const X11_XCB_VULKAN_SURFACE = 0x00052001
+const WAYLAND_LIBDECOR = 0x00053001
+
+const ANY_PLATFORM = 0x00060000
+const PLATFORM_WIN32 = 0x00060001
+const PLATFORM_COCOA = 0x00060002
+const PLATFORM_WAYLAND = 0x00060003
+const PLATFORM_X11 = 0x00060004
+const PLATFORM_NULL = 0x00060005
+const DONT_CARE = -1
+
+type glproc = anyptr //fn()
+type vkproc = anyptr //fn()
+
+type allocatefun = anyptr //fn(int size, anyptr user)
+
+type reallocatefun = anyptr //fn(anyptr block, int size, anyptr user)
+
+type deallocatefun = anyptr //fn(anyptr block, anyptr user)
+
+type errorfun = anyptr //fn(i32 error_code, anyptr description)
+
+type windowposfun = anyptr //fn(window* window, i32 xpos, i32 ypos)
+
+type windowsizefun = anyptr //fn(window* window, i32 width, i32 height)
+
+type windowclosefun = anyptr //fn(window* window)
+
+type windowrefreshfun = anyptr //fn(window* window)
+
+type windowfocusfun = anyptr //fn(window* window, i32 focused)
+
+type windowiconifyfun = anyptr //fn(window* window, i32 iconified)
+
+type windowmaximizefun = anyptr //fn(window* window, i32 maximized)
+
+type framebuffersizefun = anyptr //fn(window* window, i32 width, i32 height)
+
+type windowcontentscalefun = anyptr //fn(window* window, f32 xscale, f32 yscale)
+
+type mousebuttonfun = anyptr //fn(window* window, i32 button, i32 action, i32 mods)
+
+type cursorposfun = anyptr //fn(window* window, f64 xpos, f64 ypos)
+
+type cursorenterfun = anyptr //fn(window* window, i32 entered)
+
+type scrollfun = anyptr //fn(window* window, f64 xoffset, f64 yoffset)
+
+type keyfun = anyptr //fn(window* window, i32 key, i32 scancode, i32 action, i32 mods)
+
+type charfun = anyptr //fn(window* window, u32 codepoint)
+
+type charmodsfun = anyptr //fn(window* window, u32 codepoint, i32 mods)
+
+type dropfun = anyptr //fn(window* window, i32 path_count, anyptr paths[])
+
+type monitorfun = anyptr //fn(monitor* monitor, i32 event)
+
+type joystickfun = anyptr //fn(i32 jid, i32 event)
+
+type vidmode = struct
+{
+    i32 width
+    i32 height
+    i32 redBits
+    i32 greenBits
+    i32 blueBits
+    i32 refreshRate
+}
+
+type gammaramp = struct
+{
+    rawptr<u16> red
+    rawptr<u16> green
+    rawptr<u16> blue
+    u32 size
+}
+
+type image = struct
+{
+    i32 width
+    i32 height
+    anyptr pixels
+}
+
+type gamepadstate = struct
+{
+    [u8;15] buttons
+    [f32;6] axes
+}
+
+type allocator = struct
+{
+    allocatefun allocate
+    reallocatefun reallocate
+    deallocatefun deallocate
+    anyptr user
+}
+
+
+#linkid glfwInit
+fn init(): i32
+
+#linkid glfwTerminate
+fn terminate()
+
+#linkid glfwInitHint
+fn init_hint(i32 hint, i32 value)
+
+#linkid glfwInitAllocator
+fn init_allocator(anyptr allocator)
+
+#linkid glfwGetVersion
+fn get_version(anyptr major, anyptr minor, anyptr rev)
+
+#linkid glfwGetVersionString
+fn get_version_string(): anyptr
+
+#linkid glfwGetError
+fn get_error(rawptr<anyptr> description): i32
+
+#linkid glfwSetErrorCallback
+fn set_error_callback(errorfun callback): errorfun
+
+#linkid glfwGetPlatform
+fn get_platform(): i32
+
+#linkid glfwPlatformSupported
+fn platform_supported(i32 platform): i32
+
+#linkid glfwGetMonitors
+fn get_monitors(anyptr count): anyptr
+
+#linkid glfwGetPrimaryMonitor
+fn get_primary_monitor(): anyptr
+
+#linkid glfwGetMonitorPos
+fn get_monitor_pos(anyptr monitor, anyptr xpos, anyptr ypos)
+
+#linkid glfwGetMonitorWorkarea
+fn get_monitor_workarea(anyptr monitor, anyptr xpos, anyptr ypos, rawptr<i32> width, rawptr<i32> height)
+
+#linkid glfwGetMonitorPhysicalSize
+fn get_monitor_physical_size(anyptr monitor, rawptr<i32> width, rawptr<i32> height)
+
+#linkid glfwGetMonitorContentScale
+fn get_monitor_content_scale(anyptr monitor, rawptr<f32> xscale, rawptr<f32> yscale)
+
+#linkid glfwGetMonitorName
+fn get_monitor_name(anyptr monitor): anyptr
+
+#linkid glfwSetMonitorUserPointer
+fn set_monitor_user_pointer(anyptr monitor, anyptr pointer)
+
+#linkid glfwGetMonitorUserPointer
+fn get_monitor_user_pointer(anyptr monitor): anyptr
+
+#linkid glfwSetMonitorCallback
+fn set_monitor_callback(monitorfun callback): monitorfun
+
+#linkid glfwGetVideoModes
+fn get_video_modes(anyptr monitor, anyptr count): anyptr
+
+#linkid glfwGetVideoMode
+fn get_video_mode(anyptr monitor): anyptr
+
+#linkid glfwSetGamma
+fn set_gamma(anyptr monitor, f32 gamma)
+
+#linkid glfwGetGammaRamp
+fn get_gamma_ramp(anyptr monitor): anyptr
+
+#linkid glfwSetGammaRamp
+fn set_gamma_ramp(anyptr monitor, anyptr ramp)
+
+#linkid glfwDefaultWindowHints
+fn default_window_hints()
+
+#linkid glfwWindowHint
+fn window_hint(i32 hint, i32 value)
+
+#linkid glfwWindowHintString
+fn window_hint_string(i32 hint, anyptr value)
+
+#linkid glfwCreateWindow
+fn create_window(i32 width, i32 height, anyptr title, anyptr monitor, anyptr share): anyptr
+
+#linkid glfwDestroyWindow
+fn destroy_window(anyptr window)
+
+#linkid glfwWindowShouldClose
+fn window_should_close(anyptr window): i32
+
+#linkid glfwSetWindowShouldClose
+fn set_window_should_close(anyptr window, i32 value)
+
+#linkid glfwGetWindowTitle
+fn get_window_title(anyptr window): anyptr
+
+#linkid glfwSetWindowTitle
+fn set_window_title(anyptr window, anyptr title)
+
+#linkid glfwSetWindowIcon
+fn set_window_icon(anyptr window, i32 count, anyptr images)
+
+#linkid glfwGetWindowPos
+fn get_window_pos(anyptr window, anyptr xpos, anyptr ypos)
+
+#linkid glfwSetWindowPos
+fn set_window_pos(anyptr window, i32 xpos, i32 ypos)
+
+#linkid glfwGetWindowSize
+fn get_window_size(anyptr window, rawptr<i32> width, rawptr<i32> height)
+
+#linkid glfwSetWindowSizeLimits
+fn set_window_size_limits(anyptr window, i32 minwidth, i32 minheight, i32 maxwidth, i32 maxheight)
+
+#linkid glfwSetWindowAspectRatio
+fn set_window_aspect_ratio(anyptr window, i32 numer, i32 denom)
+
+#linkid glfwSetWindowSize
+fn set_window_size(anyptr window, i32 width, i32 height)
+
+#linkid glfwGetFramebufferSize
+fn get_framebuffer_size(anyptr window, rawptr<i32> width, rawptr<i32> height)
+
+#linkid glfwGetWindowFrameSize
+fn get_window_frame_size(anyptr window, anyptr left, rawptr<i32> top, rawptr<i32> right, rawptr<i32> bottom)
+
+#linkid glfwGetWindowContentScale
+fn get_window_content_scale(anyptr window, rawptr<f32> xscale, rawptr<f32> yscale)
+
+#linkid glfwGetWindowOpacity
+fn get_window_opacity(anyptr window): f32
+
+#linkid glfwSetWindowOpacity
+fn set_window_opacity(anyptr window, f32 opacity)
+
+#linkid glfwIconifyWindow
+fn iconify_window(anyptr window)
+
+#linkid glfwRestoreWindow
+fn restore_window(anyptr window)
+
+#linkid glfwMaximizeWindow
+fn maximize_window(anyptr window)
+
+#linkid glfwShowWindow
+fn show_window(anyptr window)
+
+#linkid glfwHideWindow
+fn hide_window(anyptr window)
+
+#linkid glfwFocusWindow
+fn focus_window(anyptr window)
+
+#linkid glfwRequestWindowAttention
+fn request_window_attention(anyptr window)
+
+#linkid glfwGetWindowMonitor
+fn get_window_monitor(anyptr window): anyptr
+
+#linkid glfwSetWindowMonitor
+fn set_window_monitor(anyptr window, anyptr monitor, i32 xpos, i32 ypos, i32 width, i32 height, i32 refreshRate)
+
+#linkid glfwGetWindowAttrib
+fn get_window_attrib(anyptr window, i32 attrib): i32
+
+#linkid glfwSetWindowAttrib
+fn set_window_attrib(anyptr window, i32 attrib, i32 value)
+
+#linkid glfwSetWindowUserPointer
+fn set_window_user_pointer(anyptr window, anyptr pointer)
+
+#linkid glfwGetWindowUserPointer
+fn get_window_user_pointer(anyptr window): anyptr
+
+#linkid glfwGetWindowUserPointer
+fn set_window_pos_callback(anyptr window, windowposfun callback): windowposfun
+
+fn set_window_size_callback(anyptr window, windowsizefun callback): windowsizefun
+
+fn set_window_close_callback(anyptr window, windowclosefun callback): windowclosefun
+
+fn set_window_refresh_callback(anyptr window, windowrefreshfun callback): windowrefreshfun
+
+fn set_window_focus_callback(anyptr window, windowfocusfun callback): windowfocusfun
+
+#linkid glfwSetWindowIconifyCallback
+fn set_window_iconify_callback(anyptr window, windowiconifyfun callback): windowiconifyfun
+
+#li glfwSetWindowMaximizeCallback
+fn set_window_maximize_callback(anyptr window, windowmaximizefun callback): windowmaximizefun
+
+#li glfwSetFramebufferSizeCallback
+fn set_framebuffer_size_callback(anyptr window, framebuffersizefun callback): framebuffersizefun
+
+#li glfwSetWindowContentScaleCallback
+fn set_window_content_scale_callback(anyptr window, windowcontentscalefun callback): windowcontentscalefun
+
+#linkid glfwPollEvents
+fn poll_events()
+
+#linkid glfwWaitEvents
+fn wait_events()
+
+#linkid glfwWaitEventsTimeout
+fn wait_events_timeout(f64 timeout)
+
+#linkid glfwPostEmptyEvent
+fn post_empty_event()
+
+#linkid glfwGetInputMode
+fn get_input_mode(anyptr window, i32 mode): i32
+
+#linkid glfwSetInputMode
+fn set_input_mode(anyptr window, i32 mode, i32 value)
+
+#linkid glfwRawMouseMotionSupported
+fn raw_mouse_motion_supported(): i32
+
+#linkid glfwGetKeyName
+fn get_key_name(i32 key, i32 scancode): anyptr
+
+#linkid glfwGetKeyScancode
+fn get_key_scancode(i32 key): i32
+
+#linkid glfwGetKey
+fn get_key(anyptr window, i32 key): i32
+
+#linkid glfwGetMouseButton
+fn get_mouse_button(anyptr window, i32 button): i32
+
+#linkid glfwGetCursorPos
+fn get_cursor_pos(anyptr window, rawptr<f64> xpos, rawptr<f64> ypos)
+
+#linkid glfwSetCursorPos
+fn set_cursor_pos(anyptr window, f64 xpos, f64 ypos)
+
+#linkid glfwCreateCursor
+fn create_cursor(anyptr image, i32 xhot, i32 yhot): anyptr
+
+#linkid glfwCreateStandardCursor
+fn create_standard_cursor(i32 shape): anyptr
+
+#linkid glfwDestroyCursor
+fn destroy_cursor(anyptr cursor)
+
+#linkid glfwSetCursor
+fn set_cursor(anyptr window, anyptr cursor)
+
+#linkid glfwSetKeyCallback
+fn set_key_callback(anyptr window, keyfun callback): keyfun
+
+#linkid glfwSetCharCallback
+fn set_char_callback(anyptr window, charfun callback): charfun
+
+#linkid glfwSetCharModsCallback
+fn set_char_mods_callback(anyptr window, charmodsfun callback): charmodsfun
+
+#linkid glfwSetMouseButtonCallback
+fn set_mouse_button_callback(anyptr window, mousebuttonfun callback): mousebuttonfun
+
+#linkid glfwSetCursorPosCallback
+fn set_cursor_pos_callback(anyptr window, cursorposfun callback): cursorposfun
+
+#linkid glfwSetCursorEnterCallback
+fn set_cursor_enter_callback(anyptr window, cursorenterfun callback): cursorenterfun
+
+#linkid glfwSetScrollCallback
+fn set_scroll_callback(anyptr window, scrollfun callback): scrollfun
+
+#linkid glfwSetDropCallback
+fn set_drop_callback(anyptr window, dropfun callback): dropfun
+
+#linkid glfwJoystickPresent
+fn joystick_present(i32 jid): i32
+
+#linkid glfwGetJoystickAxes
+fn get_joystick_axes(i32 jid, anyptr count): rawptr<f32>
+
+#linkid glfwGetJoystickButtons
+fn get_joystick_buttons(i32 jid, anyptr count): anyptr
+
+#linkid glfwGetJoystickHats
+fn get_joystick_hats(i32 jid, anyptr count): anyptr
+
+#linkid glfwGetJoystickName
+fn get_joystick_name(i32 jid): anyptr
+
+#linkid glfwGetJoystickGUID
+fn get_joystick_g_uID(i32 jid): anyptr
+
+#linkid glfwSetJoystickUserPointer
+fn set_joystick_user_pointer(i32 jid, anyptr pointer)
+
+#linkid glfwGetJoystickUserPointer
+fn get_joystick_user_pointer(i32 jid): anyptr
+
+#linkid glfwJoystickIsGamepad
+fn joystick_is_gamepad(i32 jid): i32
+
+fn set_joystick_callback(joystickfun callback): joystickfun
+
+#linkid glfwUpdateGamepadMappings
+fn update_gamepad_mappings(anyptr s): i32
+
+#linkid glfwGetGamepadName
+fn get_gamepad_name(i32 jid): anyptr
+
+#linkid glfwGetGamepadState
+fn get_gamepad_state(i32 jid, anyptr state): i32
+
+#linkid glfwSetClipboardString
+fn set_clipboard_string(anyptr window, anyptr s)
+
+#linkid glfwGetClipboardString
+fn get_clipboard_string(anyptr window): anyptr
+
+#linkid glfwGetTime
+fn get_time(): f64
+
+#linkid glfwSetTime
+fn set_time(f64 time)
+
+#linkid glfwGetTimerValue
+fn get_timer_value(): u64
+
+#linkid glfwGetTimerFrequency
+fn get_timer_frequency(): u64
+
+#linkid glfwMakeContextCurrent
+fn make_context_current(anyptr window)
+
+#linkid glfwGetCurrentContext
+fn get_current_context(): anyptr
+
+#linkid glfwSwapBuffers
+fn swap_buffers(anyptr window)
+
+#linkid glfwSwapInterval
+fn swap_interval(i32 interval)
+
+#linkid glfwExtensionSupported
+fn extension_supported(anyptr extension): i32
+
+#linkid glfwGetProcAddress
+fn get_proc_address(anyptr procname): glproc
+
+#linkid glfwVulkanSupported
+fn vulkan_supported(): i32
+
+#linkid glfwGetRequiredInstanceExtensions
+fn get_required_instance_extensions(anyptr count): rawptr<anyptr>
+
+//#linkid glfwGetInstanceProcAddress
+//fn get_instance_proc_address(VkInstance instance, anyptr procname): vkproc
+
+//#linkid glfwGetPhysicalDevicePresentationSupport
+//fn get_physical_device_presentation_support(VkInstance instance, VkPhysicalDevice device, u32 queuefamily): i32
+
+//#linkid glfwCreateWindowSurface
+//fn create_window_surface(VkInstance instance, anyptr window, anyptr allocator, anyptr surface): VkResult
+
+//#linkid glfwInitVulkanLoader
+//fn init_vulkan_loader(PFN_vkGetInstanceProcAddr loader)
+

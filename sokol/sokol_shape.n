@@ -50,102 +50,102 @@ fn mat4(rawptr<f32> m): mat4_t_t
 fn mat4_transpose(rawptr<f32> m): mat4_t_t
 
 type range_t = struct {
-    anyptr ptr;
-    int size;
+    anyptr ptr_
+    int size
 }
 
 type mat4_t_t = struct {
-    [[f32;4];4] m;
+    [[f32;4];4] m
 }
 
 type vertex_t_t = struct {
-    f32 x;
-    f32 y;
-    f32 z;
-    u32 normal;
-    u16 u;
-    u16 v;
-    u32 color;
+    f32 x
+    f32 y
+    f32 z
+    u32 normal
+    u16 u
+    u16 v
+    u32 color
 }
 
 type element_range_t_t = struct {
-    i32 base_element;
-    i32 num_elements;
+    i32 base_element
+    i32 num_elements
 }
 
 type sizes_item_t_t = struct {
-    u32 num;
-    u32 size;
+    u32 num
+    u32 size
 }
 
 type sizes_t_t = struct {
-    sizes_item_t_t vertices;
-    sizes_item_t_t indices;
+    sizes_item_t_t vertices
+    sizes_item_t_t indices
 }
 
 type buffer_item_t_t = struct {
-    range_t buffer;
-    int data_size;
-    int shape_offset;
+    range_t buffer
+    int data_size
+    int shape_offset
 }
 
 type buffer_t_t = struct {
-    bool valid;
-    buffer_item_t_t vertices;
-    buffer_item_t_t indices;
+    bool valid
+    buffer_item_t_t vertices
+    buffer_item_t_t indices
 }
 
 type plane_t_t = struct {
-    f32 width;
-    f32 depth;
-    u16 tiles;
-    u32 color;
-    bool random_colors;
-    bool merge;
-    mat4_t_t transform;
+    f32 width
+    f32 depth
+    u16 tiles
+    u32 color
+    bool random_colors
+    bool merge
+    mat4_t_t transform
 }
 
 type box_t_t = struct {
-    f32 width;
-    f32 height;
-    f32 depth;
-    u16 tiles;
-    u32 color;
-    bool random_colors;
-    bool merge;
-    mat4_t_t transform;
+    f32 width
+    f32 height
+    f32 depth
+    u16 tiles
+    u32 color
+    bool random_colors
+    bool merge
+    mat4_t_t transform
 }
 
 type sphere_t_t = struct {
-    f32 radius;
-    u16 slices;
-    u16 stacks;
-    u32 color;
-    bool random_colors;
-    bool merge;
-    mat4_t_t transform;
+    f32 radius
+    u16 slices
+    u16 stacks
+    u32 color
+    bool random_colors
+    bool merge
+    mat4_t_t transform
 }
 
 type cylinder_t_t = struct {
-    f32 radius;
-    f32 height;
-    u16 slices;
-    u16 stacks;
-    u32 color;
-    bool random_colors;
-    bool merge;
-    mat4_t_t transform;
+    f32 radius
+    f32 height
+    u16 slices
+    u16 stacks
+    u32 color
+    bool random_colors
+    bool merge
+    mat4_t_t transform
 }
 
 type torus_t_t = struct {
-    f32 radius;
-    f32 ring_radius;
-    u16 sides;
-    u16 rings;
-    u32 color;
-    bool random_colors;
-    bool merge;
-    mat4_t_t transform;
+    f32 radius
+    f32 ring_radius
+    u16 sides
+    u16 rings
+    u32 color
+    bool random_colors
+    bool merge
+    mat4_t_t transform
 }
 
 

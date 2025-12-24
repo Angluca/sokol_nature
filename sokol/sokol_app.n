@@ -61,17 +61,17 @@ fn frame_count(): u64
 #linkid sapp_frame_duration
 fn frame_duration(): f64
 #linkid sapp_set_clipboard_string
-fn set_clipboard_string(rawptr<u8> str)
+fn set_clipboard_string(anyptr str)
 #linkid sapp_get_clipboard_string
-fn get_clipboard_string(): rawptr<u8>
+fn get_clipboard_string(): anyptr
 #linkid sapp_set_window_title
-fn set_window_title(rawptr<u8> str)
+fn set_window_title(anyptr str)
 #linkid sapp_set_icon
 fn set_icon(rawptr<icon_desc_t> icon_desc)
 #linkid sapp_get_num_dropped_files
 fn get_num_dropped_files(): i32
 #linkid sapp_get_dropped_file_path
-fn get_dropped_file_path(i32 index): rawptr<u8>
+fn get_dropped_file_path(i32 index): anyptr
 #linkid sapp_run
 fn run(rawptr<desc_t> desc)
 #linkid sapp_get_environment
@@ -268,11 +268,11 @@ const ANDROIDTOOLTYPE_STYLUS = 2
 const ANDROIDTOOLTYPE_MOUSE = 3
 
 type touchpoint_t = struct {
-    anyptr identifier;
-    f32 pos_x;
-    f32 pos_y;
-    u32 android_tooltype;
-    bool changed;
+    anyptr identifier
+    f32 pos_x
+    f32 pos_y
+    u32 android_tooltype
+    bool changed
 }
 
 const MOUSEBUTTON_LEFT = 0
@@ -289,49 +289,49 @@ const MODIFIER_RMB = 512
 const MODIFIER_MMB = 1024
 
 type event_t = struct {
-    u64 frame_count;
-    u32 type_;
-    u32 key_code;
-    u32 char_code;
-    bool key_repeat;
-    u32 modifiers;
-    u32 mouse_button;
-    f32 mouse_x;
-    f32 mouse_y;
-    f32 mouse_dx;
-    f32 mouse_dy;
-    f32 scroll_x;
-    f32 scroll_y;
-    i32 num_touches;
-    [touchpoint_t;8] touches;
-    i32 window_width;
-    i32 window_height;
-    i32 framebuffer_width;
-    i32 framebuffer_height;
+    u64 frame_count
+    u32 type_
+    u32 key_code
+    u32 char_code
+    bool key_repeat
+    u32 modifiers
+    u32 mouse_button
+    f32 mouse_x
+    f32 mouse_y
+    f32 mouse_dx
+    f32 mouse_dy
+    f32 scroll_x
+    f32 scroll_y
+    i32 num_touches
+    [touchpoint_t;8] touches
+    i32 window_width
+    i32 window_height
+    i32 framebuffer_width
+    i32 framebuffer_height
 }
 
 type range_t = struct {
-    anyptr ptr;
-    int size;
+    anyptr ptr_
+    int size
 }
 
 type image_desc_t = struct {
-    i32 width;
-    i32 height;
-    i32 cursor_hotspot_x;
-    i32 cursor_hotspot_y;
-    range_t pixels;
+    i32 width
+    i32 height
+    i32 cursor_hotspot_x
+    i32 cursor_hotspot_y
+    range_t pixels
 }
 
 type icon_desc_t = struct {
-    bool sokol_default;
-    [image_desc_t;8] images;
+    bool sokol_default
+    [image_desc_t;8] images
 }
 
 type allocator_t = struct {
-    anyptr alloc_fn;
-    anyptr free_fn;
-    anyptr user_data;
+    anyptr alloc_fn
+    anyptr free_fn
+    anyptr user_data
 }
 
 const LOGITEM_OK = 0
@@ -467,151 +467,151 @@ const PIXELFORMAT_DEPTH = 6
 const PIXELFORMAT_DEPTH_STENCIL = 7
 
 type environment_defaults_t = struct {
-    u32 color_format;
-    u32 depth_format;
-    i32 sample_count;
+    u32 color_format
+    u32 depth_format
+    i32 sample_count
 }
 
 type metal_environment_t = struct {
-    anyptr device;
+    anyptr device
 }
 
 type d3d11_environment_t = struct {
-    anyptr device;
-    anyptr device_context;
+    anyptr device
+    anyptr device_context
 }
 
 type wgpu_environment_t = struct {
-    anyptr device;
+    anyptr device
 }
 
 type vulkan_environment_t = struct {
-    anyptr physical_device;
-    anyptr device;
-    anyptr queue;
-    u32 queue_family_index;
+    anyptr physical_device
+    anyptr device
+    anyptr queue
+    u32 queue_family_index
 }
 
 type environment_t = struct {
-    environment_defaults_t defaults;
-    metal_environment_t metal;
-    d3d11_environment_t d3d11;
-    wgpu_environment_t wgpu;
-    vulkan_environment_t vulkan;
+    environment_defaults_t defaults
+    metal_environment_t metal
+    d3d11_environment_t d3d11
+    wgpu_environment_t wgpu
+    vulkan_environment_t vulkan
 }
 
 type metal_swapchain_t = struct {
-    anyptr current_drawable;
-    anyptr depth_stencil_texture;
-    anyptr msaa_color_texture;
+    anyptr current_drawable
+    anyptr depth_stencil_texture
+    anyptr msaa_color_texture
 }
 
 type d3d11_swapchain_t = struct {
-    anyptr render_view;
-    anyptr resolve_view;
-    anyptr depth_stencil_view;
+    anyptr render_view
+    anyptr resolve_view
+    anyptr depth_stencil_view
 }
 
 type wgpu_swapchain_t = struct {
-    anyptr render_view;
-    anyptr resolve_view;
-    anyptr depth_stencil_view;
+    anyptr render_view
+    anyptr resolve_view
+    anyptr depth_stencil_view
 }
 
 type vulkan_swapchain_t = struct {
-    anyptr render_image;
-    anyptr render_view;
-    anyptr resolve_image;
-    anyptr resolve_view;
-    anyptr depth_stencil_image;
-    anyptr depth_stencil_view;
-    anyptr render_finished_semaphore;
-    anyptr present_complete_semaphore;
+    anyptr render_image
+    anyptr render_view
+    anyptr resolve_image
+    anyptr resolve_view
+    anyptr depth_stencil_image
+    anyptr depth_stencil_view
+    anyptr render_finished_semaphore
+    anyptr present_complete_semaphore
 }
 
 type gl_swapchain_t = struct {
-    u32 framebuffer;
+    u32 framebuffer
 }
 
 type swapchain_t = struct {
-    i32 width;
-    i32 height;
-    i32 sample_count;
-    u32 color_format;
-    u32 depth_format;
-    metal_swapchain_t metal;
-    d3d11_swapchain_t d3d11;
-    wgpu_swapchain_t wgpu;
-    vulkan_swapchain_t vulkan;
-    gl_swapchain_t gl;
+    i32 width
+    i32 height
+    i32 sample_count
+    u32 color_format
+    u32 depth_format
+    metal_swapchain_t metal
+    d3d11_swapchain_t d3d11
+    wgpu_swapchain_t wgpu
+    vulkan_swapchain_t vulkan
+    gl_swapchain_t gl
 }
 
 type logger_t = struct {
-    anyptr func;
-    anyptr user_data;
+    anyptr func
+    anyptr user_data
 }
 
 type gl_desc_t = struct {
-    i32 major_version;
-    i32 minor_version;
+    i32 major_version
+    i32 minor_version
 }
 
 type win32_desc_t = struct {
-    bool console_utf8;
-    bool console_create;
-    bool console_attach;
+    bool console_utf8
+    bool console_create
+    bool console_attach
 }
 
 type html5_desc_t = struct {
-    rawptr<u8> canvas_selector;
-    bool canvas_resize;
-    bool preserve_drawing_buffer;
-    bool premultiplied_alpha;
-    bool ask_leave_site;
-    bool update_document_title;
-    bool bubble_mouse_events;
-    bool bubble_touch_events;
-    bool bubble_wheel_events;
-    bool bubble_key_events;
-    bool bubble_char_events;
-    bool use_emsc_set_main_loop;
-    bool emsc_set_main_loop_simulate_infinite_loop;
+    anyptr canvas_selector
+    bool canvas_resize
+    bool preserve_drawing_buffer
+    bool premultiplied_alpha
+    bool ask_leave_site
+    bool update_document_title
+    bool bubble_mouse_events
+    bool bubble_touch_events
+    bool bubble_wheel_events
+    bool bubble_key_events
+    bool bubble_char_events
+    bool use_emsc_set_main_loop
+    bool emsc_set_main_loop_simulate_infinite_loop
 }
 
 type ios_desc_t = struct {
-    bool keyboard_resizes_canvas;
+    bool keyboard_resizes_canvas
 }
 
 type desc_t = struct {
-    anyptr init_cb;
-    anyptr frame_cb;
-    anyptr cleanup_cb;
-    anyptr event_cb;
-    anyptr user_data;
-    anyptr init_userdata_cb;
-    anyptr frame_userdata_cb;
-    anyptr cleanup_userdata_cb;
-    anyptr event_userdata_cb;
-    i32 width;
-    i32 height;
-    i32 sample_count;
-    i32 swap_interval;
-    bool high_dpi;
-    bool fullscreen;
-    bool alpha;
-    anyptr window_title;
-    bool enable_clipboard;
-    i32 clipboard_size;
-    bool enable_dragndrop;
-    i32 max_dropped_files;
-    i32 max_dropped_file_path_length;
-    icon_desc_t icon;
-    allocator_t allocator;
-    logger_t logger;
-    gl_desc_t gl;
-    win32_desc_t win32;
-    html5_desc_t html5;
-    ios_desc_t ios;
+    anyptr init_cb
+    anyptr frame_cb
+    anyptr cleanup_cb
+    anyptr event_cb
+    anyptr user_data
+    anyptr init_userdata_cb
+    anyptr frame_userdata_cb
+    anyptr cleanup_userdata_cb
+    anyptr event_userdata_cb
+    i32 width
+    i32 height
+    i32 sample_count
+    i32 swap_interval
+    bool high_dpi
+    bool fullscreen
+    bool alpha
+    anyptr window_title
+    bool enable_clipboard
+    i32 clipboard_size
+    bool enable_dragndrop
+    i32 max_dropped_files
+    i32 max_dropped_file_path_length
+    icon_desc_t icon
+    allocator_t allocator
+    logger_t logger
+    gl_desc_t gl
+    win32_desc_t win32
+    html5_desc_t html5
+    ios_desc_t ios
 }
 
 const HTML5FETCHERROR_FETCH_ERROR_NO_ERROR = 0
@@ -619,19 +619,19 @@ const HTML5FETCHERROR_FETCH_ERROR_BUFFER_TOO_SMALL = 1
 const HTML5FETCHERROR_FETCH_ERROR_OTHER = 2
 
 type html5_fetch_response_t = struct {
-    bool succeeded;
-    u32 error_code;
-    i32 file_index;
-    range_t data;
-    range_t buffer;
-    anyptr user_data;
+    bool succeeded
+    u32 error_code
+    i32 file_index
+    range_t data
+    range_t buffer
+    anyptr user_data
 }
 
 type html5_fetch_request_t = struct {
-    i32 dropped_file_index;
-    anyptr callback;
-    range_t buffer;
-    anyptr user_data;
+    i32 dropped_file_index
+    anyptr callback
+    range_t buffer
+    anyptr user_data
 }
 
 const MOUSECURSOR_DEFAULT = 0
@@ -663,12 +663,20 @@ const MOUSECURSOR_CUSTOM_14 = 25
 const MOUSECURSOR_CUSTOM_15 = 26
 const MOUSECURSOR_NUM = 27
 
-type alloc_cb_t = fn(uint, anyptr): anyptr
-type free_cb_t = fn(anyptr, anyptr)
-type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
-type cb_t = fn()
-type event_cb_t = fn(rawptr<event_t>)
-type data_cb_t = fn(anyptr)
-type event_data_cb_t = fn(rawptr<event_t>, anyptr)
-type response_cb_t = fn(rawptr<html5_fetch_response_t>)
+type alloc_cb_t = anyptr
+type free_cb_t = anyptr
+type log_cb_t = anyptr
+type cb_t = anyptr
+type event_cb_t = anyptr
+type data_cb_t = anyptr
+type event_data_cb_t = anyptr
+type response_cb_t = anyptr
 
+//type alloc_cb_t = fn(uint, anyptr): anyptr
+//type free_cb_t = fn(anyptr, anyptr)
+//type log_cb_t = fn(anyptr, u32, u32, anyptr, u32, anyptr, anyptr)
+//type cb_t = fn()
+//type event_cb_t = fn(rawptr<event_t>)
+//type data_cb_t = fn(anyptr)
+//type event_data_cb_t = fn(rawptr<event_t>, anyptr)
+//type response_cb_t = fn(rawptr<html5_fetch_response_t>)

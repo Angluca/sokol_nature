@@ -55,14 +55,14 @@ const LOGITEM_VITA_PTHREAD_CREATE_FAILED = 28
 const LOGITEM_N3DS_NDSP_OPEN_FAILED = 29
 
 type logger_t = struct {
-    log_cb_t func;
-    anyptr user_data;
+    log_cb_t func
+    anyptr user_data
 }
 
 type allocator_t = struct {
-    alloc_cb_t alloc_fn;
-    free_cb_t free_fn;
-    anyptr user_data;
+    alloc_cb_t alloc_fn
+    free_cb_t free_fn
+    anyptr user_data
 }
 
 const N3DSNDSPINTERPTYPE_DSP_INTERP_POLYPHASE = 0
@@ -70,26 +70,26 @@ const N3DSNDSPINTERPTYPE_DSP_INTERP_LINEAR = 1
 const N3DSNDSPINTERPTYPE_DSP_INTERP_NONE = 2
 
 type n3ds_desc_t = struct {
-    i32 queue_count;
-    u32 interpolation_type;
-    i32 channel_id;
+    i32 queue_count
+    u32 interpolation_type
+    i32 channel_id
 }
 
 type desc_t = struct {
-    i32 sample_rate;
-    i32 num_channels;
-    i32 buffer_frames;
-    i32 packet_frames;
-    i32 num_packets;
-    stream_cb_t stream_cb;
-    stream_data_cb_t stream_userdata_cb;
-    anyptr user_data;
-    n3ds_desc_t n3ds;
-    allocator_t allocator;
-    logger_t logger;
+    i32 sample_rate
+    i32 num_channels
+    i32 buffer_frames
+    i32 packet_frames
+    i32 num_packets
+    stream_cb_t stream_cb
+    stream_data_cb_t stream_userdata_cb
+    anyptr user_data
+    n3ds_desc_t n3ds
+    allocator_t allocator
+    logger_t logger
 }
 
-type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type log_cb_t = fn(anyptr, u32, u32, anyptr, u32, anyptr, anyptr)
 type alloc_cb_t = fn(uint, anyptr): anyptr
 type free_cb_t = fn(anyptr, anyptr)
 type stream_cb_t = fn(rawptr<f32>, int, int)

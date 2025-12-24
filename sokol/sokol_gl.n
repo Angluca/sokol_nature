@@ -186,56 +186,56 @@ const LOGITEM_CONTEXT_POOL_EXHAUSTED = 5
 const LOGITEM_CANNOT_DESTROY_DEFAULT_CONTEXT = 6
 
 type logger_t_t = struct {
-    log_cb_t func;
-    anyptr user_data;
+    log_cb_t func
+    anyptr user_data
 }
 
 type pipeline_t = struct {
-    u32 id;
+    u32 id
 }
 
 type context_t = struct {
-    u32 id;
+    u32 id
 }
 
 type error_t_t = struct {
-    bool any_;
-    bool vertices_full;
-    bool uniforms_full;
-    bool commands_full;
-    bool stack_overflow;
-    bool stack_underflow;
-    bool no_context;
+    bool any_
+    bool vertices_full
+    bool uniforms_full
+    bool commands_full
+    bool stack_overflow
+    bool stack_underflow
+    bool no_context
 }
 
 type context_desc_t_t = struct {
-    i32 max_vertices;
-    i32 max_commands;
-    u32 color_format;
-    u32 depth_format;
-    i32 sample_count;
+    i32 max_vertices
+    i32 max_commands
+    u32 color_format
+    u32 depth_format
+    i32 sample_count
 }
 
 type allocator_t_t = struct {
-    alloc_cb_t alloc_fn;
-    free_cb_t free_fn;
-    anyptr user_data;
+    alloc_cb_t alloc_fn
+    free_cb_t free_fn
+    anyptr user_data
 }
 
 type desc_t_t = struct {
-    i32 max_vertices;
-    i32 max_commands;
-    i32 context_pool_size;
-    i32 pipeline_pool_size;
-    u32 color_format;
-    u32 depth_format;
-    i32 sample_count;
-    u32 face_winding;
-    allocator_t_t allocator;
-    logger_t_t logger;
+    i32 max_vertices
+    i32 max_commands
+    i32 context_pool_size
+    i32 pipeline_pool_size
+    u32 color_format
+    u32 depth_format
+    i32 sample_count
+    u32 face_winding
+    allocator_t_t allocator
+    logger_t_t logger
 }
 
-type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type log_cb_t = fn(anyptr, u32, u32, anyptr, u32, anyptr, anyptr)
 type alloc_cb_t = fn(uint, anyptr): anyptr
 type free_cb_t = fn(anyptr, anyptr)
 

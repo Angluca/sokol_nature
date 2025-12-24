@@ -9,8 +9,10 @@ type = "bin"
 # 填写相对路劲是，以当前编译的工作目录为基准。
 [links]
 sokol = { darwin_amd64 = 'lib/libsokol.a' }
+glfw = { darwin_amd64 = 'lib/libglfw3.a' }
 
 [dependencies]
-sokol = { type = "local", version = "v1.0.0", path = "./sokol" }
+sokol = { type = "local", version = "v0.1.0", path = "./sokol" }
+glfw = { type = "local", version = "v0.1.0", path = "./glfw" }
 
 

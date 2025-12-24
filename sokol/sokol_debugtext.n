@@ -71,9 +71,9 @@ fn color1i(u32 rgba)
 #linkid sdtx_putc
 fn putc(u8 c)
 #linkid sdtx_puts
-fn puts(rawptr<u8> str)
+fn puts(anyptr str)
 #linkid sdtx_putr
-fn putr(rawptr<u8> str, i32 len)
+fn putr(anyptr str, i32 len)
 #linkid sdtx_get_cleared_fmt_buffer
 fn get_cleared_fmt_buffer(): range_t
 
@@ -85,52 +85,52 @@ const LOGITEM_CONTEXT_POOL_EXHAUSTED = 4
 const LOGITEM_CANNOT_DESTROY_DEFAULT_CONTEXT = 5
 
 type logger_t_t = struct {
-    log_cb_t func;
-    anyptr user_data;
+    log_cb_t func
+    anyptr user_data
 }
 
 type context_t = struct {
-    u32 id;
+    u32 id
 }
 
 type range_t = struct {
-    anyptr ptr;
-    int size;
+    anyptr ptr_
+    int size
 }
 
 type font_desc_t_t = struct {
-    range_t data;
-    u8 first_char;
-    u8 last_char;
+    range_t data
+    u8 first_char
+    u8 last_char
 }
 
 type context_desc_t_t = struct {
-    i32 max_commands;
-    i32 char_buf_size;
-    f32 canvas_width;
-    f32 canvas_height;
-    i32 tab_width;
-    u32 color_format;
-    u32 depth_format;
-    i32 sample_count;
+    i32 max_commands
+    i32 char_buf_size
+    f32 canvas_width
+    f32 canvas_height
+    i32 tab_width
+    u32 color_format
+    u32 depth_format
+    i32 sample_count
 }
 
 type allocator_t_t = struct {
-    alloc_cb_t alloc_fn;
-    free_cb_t free_fn;
-    anyptr user_data;
+    alloc_cb_t alloc_fn
+    free_cb_t free_fn
+    anyptr user_data
 }
 
 type desc_t_t = struct {
-    i32 context_pool_size;
-    i32 printf_buf_size;
-    [font_desc_t_t;8] fonts;
-    context_desc_t_t context;
-    allocator_t_t allocator;
-    logger_t_t logger;
+    i32 context_pool_size
+    i32 printf_buf_size
+    [font_desc_t_t;8] fonts
+    context_desc_t_t context
+    allocator_t_t allocator
+    logger_t_t logger
 }
 
-type log_cb_t = fn(rawptr<u8>, u32, u32, rawptr<u8>, u32, rawptr<u8>, anyptr)
+type log_cb_t = fn(anyptr, u32, u32, anyptr, u32, anyptr, anyptr)
 type alloc_cb_t = fn(uint, anyptr): anyptr
 type free_cb_t = fn(anyptr, anyptr)
 

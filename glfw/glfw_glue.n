@@ -1,0 +1,139 @@
+import sokol_nature.sokol.sokol_gfx as sg
+import sokol_nature.glfw.glfw as gg
+
+bool _no_depth_buffer = false
+//i32 _major_version = 0
+//i32 _minor_version = 0
+i32 _sample_count = 0
+anyptr _window = null
+type desc_t = struct {
+    i32 width
+    i32 height
+    i32 sample_count
+    bool no_depth_buffer
+    string title
+    i32 version_major
+    i32 version_minor
+}
+
+fn _def(i32 val, i32 def): i32 {
+    if val == 0 { return def }
+    return val
+}
+
+fn init(rawptr<desc_t> desc) {
+    assert(desc != null)
+    assert(desc.width > 0)
+    assert(desc.height > 0)
+    assert(desc.title.len() > 0)
+    var _desc = *desc
+    _desc.sample_count = _def(_desc.sample_count, 1)
+    _desc.version_major = _def(_desc.version_major, 4)
+    _desc.version_minor = _def(_desc.version_minor, 1)
+    gg.init()
+    gg.window_hint(gg.COCOA_RETINA_FRAMEBUFFER, 0)
+    _no_depth_buffer = _desc.no_depth_buffer
+    if _no_depth_buffer {
+        gg.window_hint(gg.DEPTH_BITS, 0)
+        gg.window_hint(gg.STENCIL_BITS, 0)
+    }
+    if _desc.sample_count == 1 { _sample_count = 0
+    } else { _sample_count = _desc.sample_count }
+    gg.window_hint(gg.SAMPLES, _sample_count);
+    gg.window_hint(gg.CONTEXT_VERSION_MAJOR, _desc.version_major);
+    gg.window_hint(gg.CONTEXT_VERSION_MINOR, _desc.version_minor);
+    gg.window_hint(gg.OPENGL_FORWARD_COMPAT, gg.TRUE);
+    gg.window_hint(gg.OPENGL_PROFILE, gg.OPENGL_CORE_PROFILE);
+    _window = gg.create_window(_desc.width, _desc.height, _desc.title.ref(), 0, 0);
+    gg.make_context_current(_window);
+    gg.swap_interval(1);
+
+}
+
+fn window(): anyptr {
+    return _window
+}
+
+fn width(): i32 {
+    i32 width = 0
+    i32 height = 0
+    gg.get_framebuffer_size(_window, &width, &height)
+    return width
+}
+
+fn height(): i32 {
+    i32 width = 0
+    i32 height = 0
+    gg.get_framebuffer_size(_window, &width, &height)
+    return height
+}
+
+fn environment(): sg.environment_t {
+    var ret = sg.environment_t {}
+    ret.defaults.color_format = sg.PIXELFORMAT_RGBA8
+    if _no_depth_buffer {
+        ret.defaults.depth_format = sg.PIXELFORMAT_NONE
+    } else {
+        ret.defaults.depth_format = sg.PIXELFORMAT_DEPTH_STENCIL
+    }
+    ret.defaults.sample_count = _sample_count
+    return ret
+}
+
+fn swapchain(): sg.swapchain_t {
+    i32 width = 0
+    i32 height = 0
+    gg.get_framebuffer_size(_window, &width, &height)
+    var ret = sg.swapchain_t {}
+    ret.width = width
+    ret.height = height
+    ret.sample_count = _sample_count
+    ret.color_format = sg.PIXELFORMAT_RGBA8
+    if _no_depth_buffer {
+        ret.depth_format = sg.PIXELFORMAT_NONE
+    } else {
+        ret.depth_format = sg.PIXELFORMAT_DEPTH_STENCIL
+    }
+    ret.gl.framebuffer = 0
+    return ret
+}
+
+fn main() {
+}
+
+//var pass_action = sg.pass_action_t{}
+//fn init() {
+    //var desc = sg.desc_t{}
+    //desc.environment = sglue.environment()
+    //sg.setup(&desc)
+    //pass_action.colors[0].load_action = sg.LOADACTION_CLEAR
+    //pass_action.colors[0].clear_value = sg.color_t { r: 0.0, g: 0.0, b: 1.0, a: 1.0 }
+//}
+
+//fn frame() {
+    //var g = pass_action.colors[0].clear_value.g + 0.01
+    //if g > 1.0 { g = 0 }
+    //pass_action.colors[0].clear_value.g = g
+    //var pass = sg.pass_t {action: pass_action, swapchain: sglue.swapchain()}
+    //sg.begin_pass(&pass)
+    //sg.end_pass()
+    //sg.commit()
+//}
+
+//fn cleanup() {
+    //sg.shutdown()
+//}
+
+//fn main() {
+    //var ret = sapp.desc_t {
+        //init_cb: init as anyptr,
+        //frame_cb: frame as anyptr,
+        //cleanup_cb: cleanup as anyptr,
+        //width: 640,
+        //height: 480,
+        //window_title: 'clear'.ref(),
+        //icon: sapp.icon_desc_t { sokol_default: true },
+    //}
+    //sapp.run(&ret)
+//}
+
