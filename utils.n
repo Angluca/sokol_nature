@@ -1,0 +1,18 @@
+import sokol_nature.sokol.sokol_gfx as sg
+//import sokol_nature.glfw.glfw_glue as gg
+//import sokol_nature.glfw.glfw as gf
+
+fn range<T>(T sz): sg.range_t {
+    return sg.range_t {
+        ptr_: sz as anyptr,
+        size: @sizeof(T),
+    }
+}
+
+fn range2<T>(T sz, i64 size): sg.range_t {
+    return sg.range_t {
+        ptr_: sz as anyptr,
+        size: size,
+    }
+}
+

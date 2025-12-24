@@ -1,30 +1,56 @@
 import sokol_nature.sokol.sokol_gfx as sg
 import sokol_nature.glfw.glfw_glue as gg
 import sokol_nature.glfw.glfw as gf
+import sokol_nature.utils as ut
 
-var pass_action = sg.pass_action_t{}
+var pass_action = sg.pass_action_t {}
+var bind = sg.bindings_t {}
+var pip = sg.pipeline_t {}
+
 fn init() {
     gg.desc_t gg_desc = gg.desc_t {
-        title: 'clear',
+        title: 'triangle',
         width: 640,
         height: 480,
+        no_depth_buffer: true,
     }
     gg.init(&gg_desc)
     var sg_desc = sg.desc_t{}
     sg_desc.environment = gg.environment()
     sg.setup(&sg_desc)
-    assert(sg.isvalid())
 
-    pass_action.colors[0].load_action = sg.LOADACTION_CLEAR
-    pass_action.colors[0].clear_value = sg.color_t { r: 0.2, g: 0.0, b: 1.0, a: 1.0 }
+    [f64;21] vertices = [
+        // positions        // colors
+        0.0, 0.5, 0.5,      1.0, 0.0, 0.0, 1.0,
+        0.5,-0.5, 0.5,      0.0, 1.0, 0.0, 1.0,
+       -0.5,-0.5, 0.5,      0.0, 0.0, 1.0, 1.0,
+    ]
+    //var buffer_desc = sg.buffer_desc_t { data: ut.range2(vertices, @sizeof(f64) * 21) }
+    var buffer_desc = sg.buffer_desc_t { data: ut.range(vertices) }
+
+    var vbuf = sg.make_buffer(&buffer_desc)
+    bind.vertex_buffers[0] = vbuf
+
+    var vertex_glsl = '#version 410\n layout(location=0) in vec4 position;\n layout(location=1) in vec4 color0;\n out vec4 color;\n void main() {\n gl_Position = position;\n color = color0;\n }\n'
+    var fragment_glsl = '#version 410\n in vec4 color;\n out vec4 frag_color;\n void main() {\n frag_color = color;\n }\n'
+    var shader_desc = sg.shader_desc_t {}
+    shader_desc.vertex_func.source = vertex_glsl.ref()
+    shader_desc.fragment_func.source = fragment_glsl.ref()
+    var shd = sg.make_shader(&shader_desc)
+
+    var pipeline_desc = sg.pipeline_desc_t {}
+    pipeline_desc.shader = shd
+    pipeline_desc.layout.attrs[0].format = sg.VERTEXFORMAT_FLOAT3
+    pipeline_desc.layout.attrs[1].format = sg.VERTEXFORMAT_FLOAT4
+    pip = sg.make_pipeline(&pipeline_desc)
 }
 
 fn frame() {
-    f32 g = pass_action.colors[0].clear_value.g + 0.01
-    if g > 1.0 { g = 0.0 }
-    pass_action.colors[0].clear_value.g = g
-    var pass = sg.pass_t {action: pass_action, swapchain: gg.swapchain()}
+    var pass = sg.pass_t {swapchain: gg.swapchain()}
     sg.begin_pass(&pass)
+    sg.apply_pipeline(pip)
+    sg.apply_bindings(&bind)
+    sg.draw(0, 3, 1)
     sg.end_pass()
     sg.commit()
     gf.swap_buffers(gg.window())
@@ -37,6 +63,8 @@ fn cleanup() {
 }
 
 fn main() {
+    pass_action.colors[0].load_action = sg.LOADACTION_CLEAR
+    pass_action.colors[0].clear_value = sg.color_t { r: 0.2, g: 0.0, b: 1.0, a: 1.0 }
     init()
     for !(gf.window_should_close(gg.window()) != 0)  {
         frame()
