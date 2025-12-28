@@ -5,7 +5,7 @@ import sokol_nature.glfw.glfw as gf
 var pass_action = sg.pass_action_t{}
 fn init() {
     gg.desc_t gg_desc = gg.desc_t {
-        title: 'clear'.ref(),
+        title: 'clear',
         width: 640,
         height: 480,
     }
